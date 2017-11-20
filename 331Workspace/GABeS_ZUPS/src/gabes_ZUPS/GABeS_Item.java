@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -361,6 +362,23 @@ public class GABeS_Item {
 		}
 	}
 	
-	
+	public String getDate(Timestamp date) {
+		try {
+			String newDate = "";
+			String query = "SELECT to_char(?, 'DD-MM-YYYY HH.mi AM') as dt from dual";
+			PreparedStatement ps = openDBConnection().prepareStatement(query);
+			ps.clearParameters();
+			ps.setTimestamp(1,date);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				newDate = rs.getString(1);
+			}
+			return newDate;
+		}
+		catch(SQLException sql) {
+			System.out.println(sql.getMessage());
+			return null;
+		}
+	}
 	  
 }

@@ -5,7 +5,7 @@
 <jsp:setProperty name="item" property="*"/>
 
 <% 
-item.getItemInfo();
+item.setItemInfo();
 ResultSet rs = Bid.viewListOfBidders();
 %>
 
@@ -88,7 +88,7 @@ ResultSet rs = Bid.viewListOfBidders();
 			<ul style="width:900px">
   				<li style="line-height:30px"><a class="active" href="../Customer_Welcome.jsp">Home</a></li>
   				<li><a href="../Update_Profile.jsp">Update Profile</a></li>
-  				<li><a href="Selling/Selling/Selling_Management.jsp">Selling Management</a></li>
+  				<li><a href="Selling_Management.jsp">Selling Management</a></li>
   				<li><a href="../Bidding/Bidding_Management.jsp">Bidding Management</a></li>
   				<li><a href="../Leave_Feedback.jsp">Leave Feedback</a></li>
   				<li><a href="../View_Feedback.jsp">View My Feedback</a></li>
@@ -102,44 +102,42 @@ ResultSet rs = Bid.viewListOfBidders();
 			<p style="line-height:0px"><b>List of Bidders</b></p>
 		</div>
 		<br/>
-		<div style="font-size:18px;background-color:#eeeeee;border:solid 2px white;width:300px;height:auto;margin-left:auto;margin-right:auto;text-align: center;">
+		<div style="font-size:18px;background-color:#eeeeee;border:solid 2px white;width:600px;height:auto;margin-left:auto;margin-right:auto;text-align: center;">
 			<p style="line-height:0px"><b>Item ID: <%=Bid.getItemID() %></b></p>
-			<p style="line-height:0px"><b>(<%=item.getStartTime()%> - <%=item.getEndTime()%>)</b></p>
+			<p style="line-height:0px"><b>(<i><%=item.getDate(Timestamp.valueOf(item.getStartTime()))%></i>   -  <i><%=item.getDate(Timestamp.valueOf(item.getEndTime()))%>)</i></b></p>
 		</div>
 		<br/>
-			<div style="padding:15px;padding-bottom:0px;border: solid 2px #000;width:675px;height:auto;margin-left:auto;margin-right:auto;text-align: center;background-color:white;box-shadow: 10px 10px 5px #888888">
-				<form method="post" action="Bid_action.jsp" name="bidForm" >	
-					<table>
-						<tr>
-							<th>Bid-Time</th>
-							<th>Username</th>
-							<th></th>
-							<th>Max Bid Limit</th>
-						</tr>
-						<%while(rs.next()){ %>
-						<tr>
-							<td><%=rs.getString(1) %></td>
-							<td><%=rs.getString(2) %></td>
-							<td></td>
-							<td><%=rs.getString(3) %></td>
-						</tr>
-						<%} %>
-						<tr>
-							<td>Winner</td>
-							<td><%=item.getCurrentWinner()%></td>
-							<td></td>
-							<td><%=item.getCurrentBid()%></td>
-						</tr>
-						<tr style="padding-bottom:0;">
-							<td></td>
-							<td></td>
-							<td></td>
-							<form method="post" action="ViewItemsSelling.jsp" name="cancel" >								
-								<td style="padding:15px"><input type="submit" value="Cancel" class="button" style="padding:0px;height:auto;margin-right:auto;margin-left:auto"></td>
-							</form>
-						</tr>
-					</table>
-				</form>
+			<div style="padding:15px;border: solid 2px #000;width:675px;height:auto;margin-left:auto;margin-right:auto;text-align: center;background-color:white;box-shadow: 10px 10px 5px #888888">
+				<table>
+					<tr>
+						<th>Bid-Time</th>
+						<th>Username</th>
+						<th></th>
+						<th>Max Bid Limit</th>
+					</tr>
+					<%while(rs.next()){ %>
+					<tr>
+						<td><%=item.getDate(rs.getTimestamp(1))%></td>
+						<td><%=rs.getString(2) %></td>
+						<td></td>
+						<td><%=rs.getString(3) %></td>
+					</tr>
+					<%} %>
+					<tr>
+						<td>Winner</td>
+						<td><%=item.getCurrentWinner()%></td>
+						<td></td>
+						<td><%=item.getCurrentBid()%></td>
+					</tr>
+					<tr >
+						<td></td>
+						<td></td> 
+						<td></td>
+						<form method="post" action="ViewItemsSelling.jsp" name="cancel" >								
+							<td style="padding:15px"><input type="submit" value="Cancel" class="button" style="padding:0px;height:auto;margin-right:auto;margin-left:auto"></td>
+						</form>
+					</tr>
+				</table>
 			</div>
 			<br/>
 			<br/>
