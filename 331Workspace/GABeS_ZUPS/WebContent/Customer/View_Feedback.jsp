@@ -1,4 +1,4 @@
-" import="java.sql.*"%>
+<%@page language="java" import="java.sql.*"%>
 <jsp:useBean id="Feedback" class= "gabes_ZUPS.GABeS_Feedback"/> 
 <jsp:useBean id="account" class= "gabes_ZUPS.GABeS_Account" scope="session"/> 
 <jsp:setProperty name="Item" property="*"/>
