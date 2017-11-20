@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -363,6 +365,62 @@ public class GABeS_Item {
 		}
 	}
 	
+	/**
+	 * 
+	 */
+	public int getNextItemID() throws IllegalStateException {
+		try {
+			int id = 0;
+			String query = "SELECT max(ItemID)+1 from GABeS_Item";
+			PreparedStatement ps = openDBConnection().prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				id = rs.getInt(1);
+			}
+			return id;
+			
+		}
+		catch(SQLException sql) {
+			System.out.println(sql.getMessage());
+			return 0;
+		}
+	}
+	
+	/**
+	 * 
+	 */
+	public int insertNewItem(int sellerID) {
+		try {
+			String query = "Insert into Gabes_Item values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			PreparedStatement ps = openDBConnection().prepareStatement(query);
+			ps.clearParameters();
+			ps.setInt(1, this.getItemID());
+			ps.setString(2, this.getItemName());
+			ps.setString(3, this.getCategories());
+			ps.setString(4, this.getStartTime());
+			ps.setString(5, this.getEndTime());
+			ps.setInt(6, this.getStartPrice());	
+			ps.setString(7, "On Auction");
+			ps.setString(8, this.getDescription());
+			ps.setInt(9, sellerID);
+			return ps.executeUpdate();
+		}
+		catch(SQLException sql) {
+			System.out.println(sql.getMessage());
+			return -1;
+		}
+	}
+	
+	/**
+	 * 
+	 */
+	public String getCurrentDate() {
+		String day = new SimpleDateFormat("dd").format(Calendar.getInstance().getTime());
+		String month = new SimpleDateFormat("MMM").format(Calendar.getInstance().getTime());
+		String year = new SimpleDateFormat("yyyy").format(Calendar.getInstance().getTime());
+		return day + "/"+ month + "/" + year;
+	}
+	
 	public String getDate(Timestamp date) {
 		try {
 			String newDate = "";
@@ -381,5 +439,6 @@ public class GABeS_Item {
 			return null;
 		}
 	}
+	
 	  
 }
