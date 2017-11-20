@@ -229,7 +229,7 @@ public class GABeS_Customer {
 		}
 		catch(SQLException sql) {
 			System.out.println(sql.getMessage());
-			return 0;
+			return -1;
 		}
 	}
 	
@@ -253,4 +253,5 @@ public class GABeS_Customer {
 			return -1;
 		}
 	}
+	
 }

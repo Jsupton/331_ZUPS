@@ -208,7 +208,7 @@ public class GABeS_Account {
 		}
 		catch(SQLException sql) {
 			System.out.println(sql.getMessage());
-			return 0;
+			return -1;
 		}
 	}
 	
@@ -308,15 +308,5 @@ public class GABeS_Account {
 			System.out.println(sql.getMessage());
 			return null;
 		}
-	}
-	
-	public static void main(String args[]) throws SQLException {
-		GABeS_Account a = new GABeS_Account();
-		ResultSet r = a.getCustomerList();
-		System.out.println(2);
-		while(r.next()) {
-			System.out.println(1);
-		}
-		a.closeDBConnection();	
 	}
 }

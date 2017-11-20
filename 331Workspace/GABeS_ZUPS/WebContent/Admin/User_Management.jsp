@@ -139,19 +139,19 @@
 						</tr>
 						<tr>
 							<td>Username</td>
-							<td><input name="userName"></td>
+							<td><input name="username" required></td>
 						</tr>
 						<tr>
 							<td>First Name</td>
-							<td><input name="fName"></td>
+							<td><input name="fName" required></td>
 						</tr>
 						<tr>
 							<td>Last Name</td>
-							<td><input name="lName"></td>
+							<td><input name="lName" required></td>
 						</tr>
 						<tr>
 							<td>Email</td>
-							<td><input name="email"></td>
+							<td><input name="email" required></td>
 						</tr>
 						<tr>
 							<td>New Password</td>
