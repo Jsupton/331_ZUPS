@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.sql.*"%>
-<jsp:useBean id="account" class= "gabes_ZUPS.GABeS_Account" scope="session"/> 
+<%@include file="Security.jsp"%>
 
 <%
 ResultSet rs1 = account.getSalesSummary(); 

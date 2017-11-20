@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.sql.*"%>
+<%@include file="Security.jsp"%>
 <jsp:useBean id="item" class= "gabes_ZUPS.GABeS_Item" /> 
 
 
@@ -8,7 +9,7 @@
 	</head>
 	<style>
 		.button {
-    		background-color: #95C6C3;
+    		background-color: #8AC0D1;
     		border: 2px solid #777;
     		color: White;
     		font-weight:bold;
@@ -25,7 +26,7 @@
     	.button:hover {
     		box-shadow: 10px 10px 5px #888888;
     		background-color: #777;
-    		border: 3px solid #95C6C3;
+    		border: 3px solid #8AC0D1;
     		color: white;
     	}
     	
@@ -56,7 +57,7 @@
 		}
 
 		li a:hover {
-    		background-color: #95C6C3;
+    		background-color: #8AC0D1;
     		color: white;
     		font-weight:bold;
 		}
@@ -68,11 +69,11 @@
 		table{
 			border-collapse: collapse;
 			background-color:#f5f5f5;
-			width:auto;
+			width:100%;
 		}
 	</style>
 	<body>
-		<div style="background-color:#95C6C3;width:100%;min-width:1000px;height:190px;border:solid 3px white">
+		<div style="background-color:#8AC0D1;width:100%;min-width:1000px;height:190px;border:solid 3px white">
 			<div style="background-color:White;width:70%;min-width:650px;height:110px;margin-left:auto;margin-right:auto;box-shadow: 10px 10px 5px #777">
 				<h1 style="text-align:center"><img src="../../Images/GABES.png" style="width:200px;height:50px;padding-top:25px"> Add Item</h1>
 			</div>
@@ -94,7 +95,7 @@
 				<p style="line-height:0px"><b>Add New Item</b></p>
 			</div>
 			<br/>
-			<div style="padding:5px;border: solid 2px #000;width:675px;height:375px;margin-left:auto;margin-right:auto;text-align: center;background-color:white;box-shadow: 10px 10px 5px #888888">
+			<div style="padding:10px;border-bottom:0px;border: solid 2px #000;width:675px;height:375px;margin-left:auto;margin-right:auto;text-align: center;background-color:white;box-shadow: 10px 10px 5px #888888">
 				<form method="post" action="AddItem_action.jsp" name="Login" >
 					<table>
 						<tr>
@@ -165,7 +166,7 @@
 			</div>
 			<br/>
 			<br/>
-			<div >
+			<div>
 				<hr style="height:2px;background-color:#777;color:#777;border:solid 1px white;margin-left:20px;margin-right:20px"/>
 				<p style="font-size:12px;margin-left:20px"> <b>Copyright ©2017 ZUPS. Powered by Upton, Schmidgall, Pekarek, and Zins </b></p>
 			</div>

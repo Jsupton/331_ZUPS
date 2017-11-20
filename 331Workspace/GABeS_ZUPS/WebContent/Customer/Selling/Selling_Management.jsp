@@ -1,11 +1,12 @@
 <%@ page language="java" import="java.sql.*"%>
+<%@include file="Security.jsp"%>
 <html style="background-color:white">
 	<head>
 		<title>Selling Management</title>
 	</head>
 	<style>
 		.button {
-    		background-color: #95C6C3;
+    		background-color: #8AC0D1;
     		border: 2px solid #777;
     		color: White;
     		font-weight:bold;
@@ -22,7 +23,7 @@
     	.button:hover {
     		box-shadow: 10px 10px 5px #888888;
     		background-color: #777;
-    		border: 3px solid #95C6C3;
+    		border: 3px solid #8AC0D1;
     		color: white;
     	}
     	
@@ -53,7 +54,7 @@
 		}
 
 		li a:hover {
-    		background-color: #95C6C3;
+    		background-color: #8AC0D1;
     		color: white;
     		font-weight:bold;
 		}
@@ -68,7 +69,7 @@
 		}
 	</style>
 	<body>
-		<div style="background-color:#95C6C3;width:100%;min-width:1000px;height:190px;border:solid 3px white">
+		<div style="background-color:#8AC0D1;width:100%;min-width:1000px;height:190px;border:solid 3px white">
 			<div style="background-color:White;width:70%;min-width:650px;height:110px;margin-left:auto;margin-right:auto;box-shadow: 10px 10px 5px #777">
 				<h1 style="text-align:center"><img src="../../Images/GABES.png" style="width:200px;height:50px;padding-top:25px"> Selling Management</h1>
 			</div>
@@ -87,7 +88,8 @@
 		<div style="font-size:18px;border-left:solid 2px white;border-right:solid 2px white;background-color:#eaeaea;width:100%;height:inherit;margin-left:auto;margin-right:auto;text-align: center;">
 			<% String anyErrors = request.getParameter("Error");%>
 		</div>
-		<div style="background-color:#eaeaea;width:100%;height:auto;border:solid 2px white;border-top:none">
+		<div style="background-color:#eaeaea;width:100%;height:auto;min-height:400px;border:solid 2px white;border-top:none">
+		<br/>
 		<br/>
 			<div style="width:950px;margin-left:auto;margin-right:auto;box-shadow: 10px 10px 5px #888888">
 			<table>
@@ -109,10 +111,10 @@
 			</div>
 			<br/>
 			<br/>
-			<div >
-				<hr style="height:2px;background-color:#777;color:#777;border:solid 1px white;margin-left:20px;margin-right:20px"/>
-				<p style="font-size:12px;margin-left:20px"> <b>Copyright ©2017 ZUPS. Powered by Upton, Schmidgall, Pekarek, and Zins </b></p>
-			</div>
+		</div>
+		<div style="margin-top:-50px">
+			<hr style="height:2px;background-color:#777;color:#777;border:solid 1px white;margin-left:20px;margin-right:20px"/>
+			<p style="font-size:12px;margin-left:20px"> <b>Copyright ©2017 ZUPS. Powered by Upton, Schmidgall, Pekarek, and Zins </b></p>
 		</div>
 	</body>
 </html>

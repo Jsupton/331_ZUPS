@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.sql.*"%>
 <%@ page language="java" import="java.util.Date.*"%>
+<%@include file="../Admin/Security.jsp"%>
 <jsp:useBean id="item" class= "gabes_ZUPS.GABeS_Item"/> 
-<jsp:useBean id="account" class= "gabes_ZUPS.GABeS_Account" scope="session"/> 
 <jsp:useBean id="Feedback" class= "gabes_ZUPS.GABeS_Feedback"/> 
 <%
 ResultSet rs = item.getItemsBought(account.getUserID()); 
@@ -13,7 +13,7 @@ ResultSet rs = item.getItemsBought(account.getUserID());
 	</head>
 	<style>
 		.button {
-    		background-color: #95C6C3;
+    		background-color: #8AC0D1;
     		border: 2px solid #777;
     		color: White;
     		font-weight:bold;
@@ -30,7 +30,7 @@ ResultSet rs = item.getItemsBought(account.getUserID());
     	.button:hover {
     		box-shadow: 10px 10px 5px #888888;
     		background-color: #777;
-    		border: 3px solid #95C6C3;
+    		border: 3px solid #8AC0D1;
     		color: white;
     	}
     	
@@ -61,7 +61,7 @@ ResultSet rs = item.getItemsBought(account.getUserID());
 		}
 
 		li a:hover {
-    		background-color: #95C6C3;
+    		background-color: #8AC0D1;
     		color: white;
     		font-weight:bold;
 		}
@@ -77,9 +77,10 @@ ResultSet rs = item.getItemsBought(account.getUserID());
 			border-collapse: collapse;
 			background-color:#f5f5f5;
 		}
+		
 	</style>
 	<body>
-		<div style="background-color:#95C6C3;width:100%;min-width:1000px;height:190px;border:solid 3px white">
+		<div style="background-color:#8AC0D1;width:100%;min-width:1000px;height:190px;border:solid 3px white">
 			<div style="background-color:White;width:70%;min-width:650px;height:110px;margin-left:auto;margin-right:auto;box-shadow: 10px 10px 5px #777">
 				<h1 style="text-align:center"><img src="../Images/GABES.png" style="width:200px;height:50px;padding-top:25px"> Leave Feedback</h1>
 			</div>
@@ -95,15 +96,15 @@ ResultSet rs = item.getItemsBought(account.getUserID());
   				<li style="line-height:30px"><a href="../Logout_action.jsp">Logout</a></li>
 			</ul>
 		</div>
-		<div style="background-color:#eaeaea;width:auto;height:auto;border:solid 2px white">
+		<div style="background-color:#eaeaea;width:auto;height:auto;min-height:400px;border:solid 2px white">
 		<br/>
 		<br/>
 		<%if(rs!=null && rs.next()) {%>
-			<div style="font-size:22px;background-color:#95C6C3;border:solid 2px white;width:400px;height:40px;margin-left:auto;margin-right:auto;text-align: center;">
+			<div style="font-size:22px;background-color:#8AC0D1;border:solid 2px white;width:400px;height:40px;margin-left:auto;margin-right:auto;text-align: center;">
 				<p style="line-height:0px"><b>List of Items Bought</b></p>
 			</div>
 			<br/>
-			<div style="padding:15px;border: solid 2px #000;width:1050px;height:auto;margin-left:auto;
+			<div style="padding:15px;border: solid 2px #000;min-width:1100px;width:90%;height:auto;margin-left:auto;
 						margin-right:auto;text-align: center;background-color:white;box-shadow: 10px 10px 5px #888888">
 					<table>
 					<tr>
@@ -144,10 +145,10 @@ ResultSet rs = item.getItemsBought(account.getUserID());
 			<br/>
 			<br/>
 			<br/>
-			<div >
-				<hr style="height:2px;background-color:#777;color:#777;border:solid 1px white;margin-left:20px;margin-right:20px"/>
-				<p style="font-size:12px;margin-left:20px"> <b>Copyright ©2017 ZUPS. Powered by Upton, Schmidgall, Pekarek, and Zins </b></p>
-			</div>
+		</div>
+		<div style="margin-top:-50px">
+			<hr style="height:2px;background-color:#777;color:#777;border:solid 1px white;margin-left:20px;margin-right:20px"/>
+			<p style="font-size:12px;margin-left:20px"> <b>Copyright ©2017 ZUPS. Powered by Upton, Schmidgall, Pekarek, and Zins </b></p>
 		</div>
 	</body>
 </html>

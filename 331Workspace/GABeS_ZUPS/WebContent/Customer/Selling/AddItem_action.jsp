@@ -1,7 +1,6 @@
-
 <%@ page language="java" import="java.sql.*"%> 
+<%@include file="Security.jsp"%>
 <jsp:useBean id="item" class= "gabes_ZUPS.GABeS_Item"/> 
-<jsp:useBean id="account" class= "gabes_ZUPS.GABeS_Account" scope="session"/> 
 <jsp:setProperty name="item" property="*"/>
 
 <%	

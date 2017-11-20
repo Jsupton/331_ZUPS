@@ -1,10 +1,9 @@
 <%@ page language="java" import="java.sql.*"%>
-<jsp:useBean id="account" class="gabes_ZUPS.GABeS_Account"/> 
+<jsp:useBean id="account" class="gabes_ZUPS.GABeS_Account" scope="session"/> 
 <% 
     try{
     	account.logout();
  		session.invalidate();  
-
     }
     catch(IllegalStateException ise){
         out.println(ise.getMessage());

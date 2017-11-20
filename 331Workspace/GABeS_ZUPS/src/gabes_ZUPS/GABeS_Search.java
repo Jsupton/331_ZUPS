@@ -7,8 +7,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
+ * This class encapsulates the required attributes for Searching items in the DB.
+ * This Java Bean class is used in the GABeS Web system.
+ * 
+ * Used for the Online Web Bidding System - GABeS
  * @author jsupton
- *
  */
 public class GABeS_Search {
 	
@@ -283,7 +286,7 @@ public class GABeS_Search {
 	  * All other methods that need database access should call this method.
 	  * @return a Connection object to Oracle
 	  */
-	 public Connection openDBConnection() {
+	public Connection openDBConnection() {
 	    try {
 	      // Load driver and link to driver manager
 	      Class.forName("oracle.jdbc.OracleDriver");
@@ -301,7 +304,7 @@ public class GABeS_Search {
 	 /**
 	  * This method is responsible for performing the search operation. It uses its instance fields to 
 	  * determine what kind of search the user is choosing to do and  then execute that query
-	  * @param 
+	  * @param the current UserID, used to exclude all items that the current User is selling.
 	  * @return ResultSet containing the desired query
 	  */
 	public ResultSet Search(int userID) {
@@ -399,7 +402,9 @@ public class GABeS_Search {
 	}
 	
 	/**
-	 * 
+	 * This combines the startDay,startMonth, and start Year to get a date string.
+	 * It also does the same with the endDay,endMonth, and end Year.
+	 * The dates are kept as strings because it is easier to use in the search queries.
 	 */
 	public void setDates() {
 		if(this.getStartMonth() != "0" && this.getStartYear() != "0" && this.getEndMonth() != "0" && this.getEndYear() != "0" && this.getStartDay()!=null && this.getEndDay()!=null){

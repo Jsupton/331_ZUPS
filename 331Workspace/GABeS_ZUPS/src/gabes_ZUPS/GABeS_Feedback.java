@@ -1,17 +1,15 @@
 package gabes_ZUPS;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+//Load JDBC API functions
+import java.sql.*;
+import oracle.jdbc.*;
 
 /**
+ * This class encapsulates the required attributes in the GABeS_Feedback table.
+ * This Java Bean class is used in the GABeS Web system.
  * 
- */
-
-/**
+ * Used for the Online Web Bidding System - GABeS
  * @author jsupton
- *
  */
 public class GABeS_Feedback {
 
@@ -31,22 +29,9 @@ public class GABeS_Feedback {
 	 * A default constructor ... no need for other constructors
    	 */
 	public GABeS_Feedback() {
+		
 	}
 	
-	public Connection openDBConnection() {
-	    try {
-	      // Load driver and link to driver manager
-	      Class.forName("oracle.jdbc.OracleDriver");
-	      // Create a connection to the specified database
-	      Connection myConnection = DriverManager.getConnection("jdbc:oracle:thin:@//cscioraclesrv.ad.csbsju.edu:1521/" +
-	                                                            "csci.cscioraclesrv.ad.csbsju.edu","TEAM6", "psuz");
-	      return myConnection;
-	    } catch (Exception E) {
-	      E.printStackTrace();
-	      System.out.println("ERROR");
-	      return null;
-	    }
-	}
 	/**
 	 * A getter for class field buyerID
 	 * @return the buyerID
@@ -143,11 +128,36 @@ public class GABeS_Feedback {
 		this.comments = comments;
 	}
 	
+	/**
+	 * This method and creates and returns a Connection object to the database. 
+	 * All other methods that need database access should call this method.
+	 * @return a Connection object to Oracle
+	 */
+	public Connection openDBConnection() {
+	    try {
+	      // Load driver and link to driver manager
+	      Class.forName("oracle.jdbc.OracleDriver");
+	      // Create a connection to the specified database
+	      Connection myConnection = DriverManager.getConnection("jdbc:oracle:thin:@//cscioraclesrv.ad.csbsju.edu:1521/" +
+	                                                            "csci.cscioraclesrv.ad.csbsju.edu","TEAM6", "psuz");
+	      return myConnection;
+	    } catch (Exception E) {
+	      E.printStackTrace();
+	      System.out.println("ERROR");
+	      return null;
+	    }
+	}
+	
+	/**
+	 * This method gets the all of the feedbaack records (itemID, Rating, ItemQuality, 
+	 * DeliveryQuality, and Comments) that the specified user has.
+	 * @param sellerID the Id for the current seller
+	 * @return ResultSet containing the specified query
+	 */
 	public ResultSet getFeedback(int sellerID) {
 		try {
-			String query = "Select F.ItemID, Rating,ItemQuality,DeliveryQuality,Comments\n" + 
-					"From GABeS_FEEDBACK F, Gabes_ITEM I\n" + 
-					"where F.ItemID = I.ItemID and I.SellerID = ?";
+			String query = "Select F.ItemID, Rating,ItemQuality,DeliveryQuality,Comments " + 
+					"From GABeS_FEEDBACK F, Gabes_ITEM I where F.ItemID = I.ItemID and I.SellerID = ?";
 			PreparedStatement ps = openDBConnection().prepareStatement(query);
 			ps.clearParameters();
 			ps.setInt(1,sellerID);

@@ -82,7 +82,7 @@
 			<ul style="width:900px">
   				<li style="line-height:30px"><a class="active" href="../Customer_Welcome.jsp">Home</a></li>
   				<li><a href="../Update_Profile.jsp">Update Profile</a></li>
-  				<li><a href="../Selling/Selling_Management.jsp">Selling Management</a></li>
+  				<li><a href="../Selling_Management.jsp">Selling Management</a></li>
   				<li><a href="Bidding_Management.jsp">Bidding Management</a></li>
   				<li><a href="../Leave_Feedback.jsp">Leave Feedback</a></li>
   				<li><a href="../View_Feedback.jsp">View My Feedback</a></li>

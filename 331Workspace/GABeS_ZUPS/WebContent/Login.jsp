@@ -13,7 +13,7 @@
 		    cursor: pointer;
 		}
 		.button:hover {
-		    background-color: #81c8ce;
+		    background-color: #A6C971;
 		    color: white;
 		    padding: 10px;
 		    margin: 4px 2px;
@@ -28,7 +28,7 @@
 		<title>GABeS Login Page</title>
 	</head>
 	<body>
-		<div style="background-color:#81c8ce;width:100%;min-width:700px;height:225px;border:solid 3px #777">
+		<div style="background-color:#A6C971;width:100%;min-width:700px;height:225px;border:solid 3px #777">
 		<br/>
 			<div style="background-color:White;width:70%;min-width:400px;height:120px;margin-left:auto;margin-right:auto;box-shadow: 10px 10px 5px #888888">
 				<h1 style="text-align:center"><img src="Images/GABES.png" style="width:200px;height:50px;"> LOGIN</h1>
@@ -45,8 +45,10 @@
 			<div style="font-size:18px;background-color:#e1e1e1;width:100%;height:auto;margin-left:auto;margin-right:auto;text-align: center;">
 				<% String anyErrors = request.getParameter("Error");
 				   if(anyErrors!=null && anyErrors.equals("1")){
-	        		   %><p style="text-align:center; color:red"><b>An Error Occurred - UNSUCCESSFUL Login</b></p><%
-	        	   }%>
+	        		   %><p style="text-align:center; color:red"><b>An Error Occurred - UNSUCCESSFUL Login</b></p><% 
+				   }else if(anyErrors!=null && anyErrors.equals("2")){
+   	        		   %><p style="text-align:center; color:red"><b>YOU MUST BE LOGGED IN</b></p><%
+   	        	   }%>
 			</div>
 			<br/>
 			<br/>

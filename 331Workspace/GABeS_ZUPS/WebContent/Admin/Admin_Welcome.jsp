@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.sql.*"%>
-<jsp:useBean id="account" class= "gabes_ZUPS.GABeS_Account" scope="session"/> 
+<%@include file="Security.jsp"%>
+
 <html style="background-color:white">
 	<head>
 		<title>ADMIN WELCOME</title>

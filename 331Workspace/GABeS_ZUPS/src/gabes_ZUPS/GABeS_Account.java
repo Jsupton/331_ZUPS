@@ -9,6 +9,8 @@ import oracle.jdbc.*;
 /**
  * This class encapsulates the required attributes in the GABeS_Account table.
  * This Java Bean class is used in the GABeS Web system.
+ * 
+ * Used for the Online Web Bidding System - GABeS
  * @author jsupton
  */
 public class GABeS_Account {
@@ -17,18 +19,16 @@ public class GABeS_Account {
 	 * The following fields correspond to the fields in Table GABeS_Account in your
 	 * GABeS_ZUPS Oracle database
 	 */
-	  private int userID;
-	  private String userName;
-	  private String password;
-	  private String type;
-	  private PreparedStatement preparedStmt;
+	private int userID;
+	private String userName;
+	private String password;
+	private String type;
+	private PreparedStatement preparedStmt;
 	  
-	  /**
-	   * This instance variable denotes if a user is logged in or not.
-	   */
-	  private boolean isLoggedIn = false;
-	  
-	  private Connection myConnection;
+	/**
+	 * This instance variable denotes if a user is logged in or not.
+	 */
+	private boolean isLoggedIn = false;
 	
 	/**
 	 * The Deault constructor... No parameters needed
@@ -118,25 +118,13 @@ public class GABeS_Account {
 	      // Load driver and link to driver manager
 	      Class.forName("oracle.jdbc.OracleDriver");
 	      // Create a connection to the specified database
-	      myConnection = DriverManager.getConnection("jdbc:oracle:thin:@//cscioraclesrv.ad.csbsju.edu:1521/" +
+	     Connection myConnection = DriverManager.getConnection("jdbc:oracle:thin:@//cscioraclesrv.ad.csbsju.edu:1521/" +
 	                                                            "csci.cscioraclesrv.ad.csbsju.edu","TEAM6", "psuz");
 	      return myConnection;
 	    } catch (Exception E) {
 	      E.printStackTrace();
 	      System.out.println("ERROR");
 	      return null;
-	    }
-	  }
-	 
-	 /**
-	  * 
-	  */
-	 public void closeDBConnection() {
-	    try {
-	      myConnection.close();
-	    } catch (Exception E) {
-	      E.printStackTrace();
-	      System.out.println("ERROR");
 	    }
 	  }
 	
@@ -158,18 +146,10 @@ public class GABeS_Account {
 			int x = cstmt.getInt(3);
 			if(x==1||x==2) {
 				isLoggedIn = true;
-				Statement stmt = myConnection.createStatement();
-				String query = "Select * from GABeS_ACCOUNT Where Username ='"+
-						this.getUserName()+"' and Password='"+this.getPassword()+"'";
-				ResultSet rs = stmt.executeQuery(query);
-				while(rs.next()) {
-					this.setUserID(rs.getInt("UserID"));
-					this.setType(rs.getString("Type"));
-				}
+				this.getAccountInfo();
 			}
 			else
 				isLoggedIn = false;
-			this.closeDBConnection();
 		 	return x;
 		}
 		catch(SQLException sql) {
@@ -189,6 +169,27 @@ public class GABeS_Account {
 	}
 	
 	/**
+	 * This method is used to populate the session variable once the user is
+	 * successfully logged in. When the User logs in successfully, this method is called
+	 * and the UserId and Type instance variables are set to their appropriate values.
+	 */
+	public void getAccountInfo() {
+		try {
+			Statement stmt = openDBConnection().createStatement();
+			String query = "Select * from GABeS_ACCOUNT Where Username ='"+
+					this.getUserName()+"' and Password='"+this.getPassword()+"'";
+			ResultSet rs = stmt.executeQuery(query);
+			while(rs.next()) {
+				this.setUserID(rs.getInt("UserID"));
+				this.setType(rs.getString("Type"));
+			}
+		}
+		catch(SQLException e) {
+			System.out.println(e.toString());
+		}
+	}
+	
+	/**
 	 * This method updates the current account information with the given instance
 	 * variable values. The JSP page loads user input value into the instance 
 	 * variables which we used to update the GABeS_ACCOUNT table
@@ -202,7 +203,6 @@ public class GABeS_Account {
 			ps.setString(2, this.getPassword());
 			ps.setInt(3, this.getUserID());
 			int r = ps.executeUpdate();
-			this.closeDBConnection();
 			return r;
 			
 		}
@@ -213,7 +213,9 @@ public class GABeS_Account {
 	}
 	
 	/**
-	 * 
+	 * This method is used for the User Management report. This method returns a result
+	 * set that contains all Customers and their basic information.
+	 * @return ResultSet containing all customers
 	 */
 	public ResultSet getCustomerList() throws IllegalStateException {
 		try {
@@ -231,7 +233,10 @@ public class GABeS_Account {
 	}
 	
 	/**
-	 * 
+	 * This method gets the next userID. It selects the max UserID in the 
+	 * database, and adds one to that. This way we do not increment the counter every
+	 * time we try to get the next value.
+	 * @return int the next UserID in the DB
 	 */
 	public int getNextUserID() throws IllegalStateException {
 		try {
@@ -242,7 +247,6 @@ public class GABeS_Account {
 			while (rs.next()) {
 				id = rs.getInt(1);
 			}
-			this.closeDBConnection();
 			return id;
 			
 		}
@@ -253,7 +257,9 @@ public class GABeS_Account {
 	}
 	
 	/**
-	 * 
+	 * This method is responsible for adding a new customer to the Database.
+	 * It uses the current instance variables to add this new user to the DB.
+	 * @return int the number of rows inserted
 	 */
 	public int addAccount() throws IllegalStateException {
 		try {
@@ -263,7 +269,6 @@ public class GABeS_Account {
 			ps.setString(2, this.getUserName());
 			ps.setString(3, this.getPassword());
 			int r = ps.executeUpdate();
-			this.closeDBConnection();
 			return r;
 		}
 		catch(SQLException sql) {
@@ -273,7 +278,10 @@ public class GABeS_Account {
 	}
 	
 	/**
-	 * 
+	 * This method is responsible for generating the Sales Summary report.
+	 * It selects the Category, ItemID, ItemName, Final selling price and commission
+	 * for each item sold.
+	 * @return ResultSet containing the specified query
 	 */
 	public ResultSet getSalesSummary() throws IllegalStateException {
 		try {
@@ -291,7 +299,10 @@ public class GABeS_Account {
 	}
 	
 	/**
-	 * 
+	 * This method is used to generate the Commission Report. It gets the UserID
+	 * Username, First name, Last name, Email, rating, and total commissions for 
+	 * each customer in the database.
+	 * @return ResultSet containing the specified query
 	 */
 	public ResultSet getCommissionReport() throws IllegalStateException {
 		try {

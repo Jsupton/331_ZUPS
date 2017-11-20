@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.sql.*"%>
+<%@include file="../Admin/Security.jsp"%>
 <jsp:useBean id="customer" class= "gabes_ZUPS.GABeS_Customer"/> 
-<jsp:useBean id="account" class= "gabes_ZUPS.GABeS_Account" scope="session"/> 
+
 <%
 	customer.setUserID(account.getUserID());
 	customer.setCustomerInfo(); 
@@ -11,7 +12,7 @@
 	</head>
 	<style>
 		.button {
-    		background-color: #95C6C3;
+    		background-color: #8AC0D1;
     		border: 2px solid #777;
     		color: White;
     		font-weight:bold;
@@ -28,7 +29,7 @@
     	.button:hover {
     		box-shadow: 10px 10px 5px #888888;
     		background-color: #777;
-    		border: 3px solid #95C6C3;
+    		border: 3px solid #8AC0D1;
     		color: white;
     	}
     	
@@ -59,7 +60,7 @@
 		}
 
 		li a:hover {
-    		background-color: #95C6C3;
+    		background-color: #8AC0D1;
     		color: white;
     		font-weight:bold;
 		}
@@ -74,7 +75,7 @@
 		}
 	</style>
 	<body>
-		<div style="background-color:#95C6C3;width:100%;min-width:1000px;height:190px;border:solid 3px white">
+		<div style="background-color:#8AC0D1;width:100%;min-width:1000px;height:190px;border:solid 3px white">
 			<div style="background-color:White;width:70%;min-width:650px;height:110px;margin-left:auto;margin-right:auto;box-shadow: 10px 10px 5px #777">
 				<h1 style="text-align:center"><img src="../Images/GABES.png" style="width:200px;height:50px;"> CUSTOMER Homepage</h1>
 				<p style="text-align:center;font-size:20px"> Welcome <%=account.getUserName()%>

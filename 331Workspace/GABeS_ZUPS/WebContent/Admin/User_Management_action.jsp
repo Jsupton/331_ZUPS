@@ -4,6 +4,7 @@
 <jsp:useBean id="acct" class= "gabes_ZUPS.GABeS_Account"/> 
 <jsp:setProperty name="cust" property="*"/> 
 <jsp:setProperty name="acct" property="*"/>
+<%@include file="Security.jsp"%>
 
 <%
 	String newPassword = request.getParameter("newPassword");

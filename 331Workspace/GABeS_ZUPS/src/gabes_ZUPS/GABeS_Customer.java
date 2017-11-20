@@ -7,8 +7,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
+ * This class encapsulates the required attributes in the GABeS_Customer table.
+ * This Java Bean class is used in the GABeS Web system.
+ * 
+ * Used for the Online Web Bidding System - GABeS
  * @author jsupton
- *
  */
 public class GABeS_Customer {
 
@@ -16,21 +19,18 @@ public class GABeS_Customer {
 	 * The following fields correspond to the fields in Table GABeS_Customer in your
 	 * GABeS_ZUPS Oracle database
 	 */
-	  private int userID;
-	  private String email;
-	  private String phone;
-	  private String fName;
-	  private String lName;
-	 /**
-	  * 
-	  */
-	  public PreparedStatement preparedStmt;
+	private int userID;
+	private String email;
+	private String phone;
+	private String fName;
+	private String lName;
+	private PreparedStatement preparedStmt;
 	  
 	
 	 /**
 	 * A default constructor ... no need for other constructors
    	 */
-	  public GABeS_Customer() {
+	public GABeS_Customer() {
 		}
 	
 	/**
@@ -140,15 +140,17 @@ public class GABeS_Customer {
    	 */
 	public void setCustomerInfo() {
 		try {
-			Statement stmt = openDBConnection().createStatement();
-			String query = "Select * from GABeS_CUSTOMER Where UserID ='"+this.getUserID()+"'";
-			ResultSet rs = stmt.executeQuery(query);
+			String query = "Select * from GABeS_CUSTOMER Where UserID=?";
+			PreparedStatement ps = openDBConnection().prepareStatement(query);
+			ps.clearParameters();
+			ps.setInt(1, this.getUserID());
+			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				this.setUserID(rs.getInt(1));
+				this.setEmail(rs.getString(2));
+				this.setPhone(rs.getString(3));
 				this.setfName(rs.getString(4));
 				this.setlName(rs.getString(5));
-				this.setPhone(rs.getString(3));
-				this.setEmail(rs.getString(2));
 			}
 		}
 		catch(SQLException sql) {
@@ -234,7 +236,9 @@ public class GABeS_Customer {
 	}
 	
 	/**
-	 * 
+	 * This method allows us to add a new customer to the database.
+	 * It performs an Insert query with the current instance variables as values.
+	 * @returns int the number of rows updated
 	 */
 	public int addCustomer() throws IllegalStateException {
 		try {

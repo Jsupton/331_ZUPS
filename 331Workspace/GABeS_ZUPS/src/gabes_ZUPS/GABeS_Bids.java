@@ -1,14 +1,15 @@
 package gabes_ZUPS;
-import java.sql.*;
 import java.util.Date;
+//Load JDBC API functions
+import java.sql.*;
+import oracle.jdbc.*;
 
 /**
+ * This class encapsulates the required attributes in the GABeS_Bids table.
+ * This Java Bean class is used in the GABeS Web system.
  * 
- */
-
-/**
+ * Used for the Online Web Bidding System - GABeS
  * @author jsupton
- *
  */
 public class GABeS_Bids {
 	
@@ -16,12 +17,11 @@ public class GABeS_Bids {
 	 * The following fields correspond to the fields in Table GABeS_Bids in your
 	 * GABeS_ZUPS Oracle database
 	 */
-	  private int userID;
-	  private int itemID;
-	  private int maxBid;
-	  private String bidTime;
-	  
-	  private PreparedStatement preparedStmt;
+	private int userID;
+	private int itemID;
+	private int maxBid;
+	private String bidTime;
+	private PreparedStatement preparedStmt;
 	  
 	/**
 	 * A default constructor ... no need for other constructors
@@ -114,7 +114,8 @@ public class GABeS_Bids {
 	  }
 	
 	/**
-	 * 
+	 * This method allows a customer to bid on an item. It executes an insert query
+	 * using the instance variables in the current GABeS_Bids object.
 	 */
 	public void bidOnItem(){
 		try {
@@ -132,8 +133,10 @@ public class GABeS_Bids {
 	}
 	
 	/**
-	 * 
-	 * 
+	 * This method allows a customer to view the list of everyone bidding
+	 * on their specified item. It performs a query that gets the BidTime, username and max
+	 * bid from the Bids table for each bid on the specific item.
+	 * @return ResultSet containing the specified query.
 	 */
 	public ResultSet viewListOfBidders(){
 		try {
