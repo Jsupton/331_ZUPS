@@ -100,7 +100,7 @@
 				</tr>
 				<tr>
 					<td>
-						<a href="AddItems.jsp" class="button" style="height:30px;width:250px;line-height:30px">Add Item</a>
+						<a href="AddItem.jsp" class="button" style="height:30px;width:250px;line-height:30px">Add Item</a>
 					</td>
 					<td> This functionality allows the current user to add a new item to put on auction
 					</td>
