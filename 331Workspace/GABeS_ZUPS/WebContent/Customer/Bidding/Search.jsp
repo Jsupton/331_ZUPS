@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.sql.*"%>
+<%@include file="../Selling/Security.jsp"%>
 <jsp:useBean id="Item" class= "gabes_ZUPS.GABeS_Item"/> 
 <%
 	ResultSet r = Item.getAllCategories();
@@ -9,7 +10,7 @@
 	</head>
 	<style>
 		.button {
-    		background-color: #95C6C3;
+    		background-color: #8AC0D1;
     		border: 2px solid #777;
     		color: White;
     		font-weight:bold;
@@ -26,7 +27,7 @@
     	.button:hover {
     		box-shadow: 10px 10px 5px #888888;
     		background-color: #777;
-    		border: 3px solid #95C6C3;
+    		border: 3px solid #8AC0D1;
     		color: white;
     	}
     	
@@ -57,7 +58,7 @@
 		}
 
 		li a:hover {
-    		background-color: #95C6C3;
+    		background-color: #8AC0D1;
     		color: white;
     		font-weight:bold;
 		}
@@ -73,7 +74,7 @@
 		}
 	</style>
 	<body>
-		<div style="background-color:#95C6C3;width:100%;min-width:1000px;height:190px;border:solid 3px white">
+		<div style="background-color:#8AC0D1;width:100%;min-width:1000px;height:190px;border:solid 3px white">
 			<div style="background-color:White;width:70%;min-width:650px;height:110px;margin-left:auto;margin-right:auto;box-shadow: 10px 10px 5px #777">
 				<h1 style="text-align:center"><img src="../../Images/GABES.png" style="width:200px;height:50px;padding-top:25px"> Search Items</h1>
 			</div>
@@ -92,7 +93,7 @@
 		<div style="background-color:#eaeaea;width:auto;height:auto;border:solid 2px white">
 		<br/>
 		<br/>
-		<div style="font-size:22px;background-color:#95C6C3;border:solid 2px white;width:175px;height:40px;margin-left:auto;margin-right:auto;text-align: center;">
+		<div style="font-size:22px;background-color:#8AC0D1;border:solid 2px white;width:175px;height:40px;margin-left:auto;margin-right:auto;text-align: center;">
 			<p style="line-height:0px"><b>Item Search</b></p>
 		</div>
 		<br/>

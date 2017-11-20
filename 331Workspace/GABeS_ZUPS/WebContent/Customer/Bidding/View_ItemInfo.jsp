@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.sql.*"%>
-<%@include file="Security.jsp"%>
+<%@include file="../Selling/Security.jsp"%>
 <jsp:useBean id="Item" class= "gabes_ZUPS.GABeS_Item"/> 
 <jsp:setProperty name="Item" property="*"/>
 <%

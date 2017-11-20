@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.sql.*"%>
-<%@include file="Security.jsp"%>
+<%@include file="../Selling/Security.jsp"%>
 <html style="background-color:white">
 	<head>
 		<title>Bidding Management</title>
