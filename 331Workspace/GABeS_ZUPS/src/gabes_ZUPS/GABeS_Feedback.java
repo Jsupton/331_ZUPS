@@ -1,5 +1,9 @@
 package gabes_ZUPS;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * 
@@ -28,7 +32,21 @@ public class GABeS_Feedback {
    	 */
 	public GABeS_Feedback() {
 	}
-
+	
+	public Connection openDBConnection() {
+	    try {
+	      // Load driver and link to driver manager
+	      Class.forName("oracle.jdbc.OracleDriver");
+	      // Create a connection to the specified database
+	      Connection myConnection = DriverManager.getConnection("jdbc:oracle:thin:@//cscioraclesrv.ad.csbsju.edu:1521/" +
+	                                                            "csci.cscioraclesrv.ad.csbsju.edu","TEAM6", "psuz");
+	      return myConnection;
+	    } catch (Exception E) {
+	      E.printStackTrace();
+	      System.out.println("ERROR");
+	      return null;
+	    }
+	}
 	/**
 	 * A getter for class field buyerID
 	 * @return the buyerID
@@ -125,6 +143,21 @@ public class GABeS_Feedback {
 		this.comments = comments;
 	}
 	
-	
+	public ResultSet getItemsBidOn(int sellerID) {
+		try {
+			String query = "Select F.ItemID, Rating,ItemQuality,DeliveryQuality,Comments\n" + 
+					"From GABeS_FEEDBACK F, Gabes_ITEM I\n" + 
+					"where F.ItemID = I.ItemID and I.SellerID = ?";
+			PreparedStatement ps = openDBConnection().prepareStatement(query);
+			ps.clearParameters();
+			ps.setInt(1,sellerID);
+			ResultSet rs = ps.executeQuery();
+			return rs;
+		}
+		catch(SQLException sql) {
+			System.out.println(sql.getMessage());
+			return null;
+		}
+	}
 	  
 }

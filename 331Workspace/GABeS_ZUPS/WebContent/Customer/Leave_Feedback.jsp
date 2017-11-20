@@ -92,7 +92,7 @@ ResultSet rs = item.getItemsBought(account.getUserID());
   				<li><a href="Bidding/Bidding_Management.jsp">Bidding Management</a></li>
   				<li><a href="Leave_Feedback.jsp">Leave Feedback</a></li>
   				<li><a href="View_Feedback.jsp">View My Feedback</a></li>
-  				<li style="line-height:30px"><a href="../../Logout_action.jsp">Logout</a></li>
+  				<li style="line-height:30px"><a href="../Logout_action.jsp">Logout</a></li>
 			</ul>
 		</div>
 		<div style="background-color:#eaeaea;width:auto;height:auto;border:solid 2px white">
@@ -103,7 +103,7 @@ ResultSet rs = item.getItemsBought(account.getUserID());
 				<p style="line-height:0px"><b>List of Items Bought</b></p>
 			</div>
 			<br/>
-			<div style="padding:15px;border: solid 2px #000;width:900px;height:auto;margin-left:auto;
+			<div style="padding:15px;border: solid 2px #000;width:1000px;height:auto;margin-left:auto;
 						margin-right:auto;text-align: center;background-color:white;box-shadow: 10px 10px 5px #888888">
 					<table>
 					<tr>

@@ -135,11 +135,11 @@
 					</tr>
 					<tr>
 						<td style="width:80px"><b>Auction Starts</b></td>
-						<td><%=rs.getString(5)%></td>
+						<td><%=Item.getDate(rs.getTimestamp(5))%></td>
 					</tr>
 					<tr>
 						<td style="width:80px"><b>Auction Ends</b></td>
-						<td><%=rs.getString(6)%></td>
+						<td><%=Item.getDate(rs.getTimestamp(6))%></td>
 					</tr>
 					<tr>
 						<td style="width:80px"><b>Description</b></td> 
