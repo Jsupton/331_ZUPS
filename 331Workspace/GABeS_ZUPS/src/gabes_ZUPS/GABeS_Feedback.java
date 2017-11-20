@@ -143,7 +143,7 @@ public class GABeS_Feedback {
 		this.comments = comments;
 	}
 	
-	public ResultSet getItemsBidOn(int sellerID) {
+	public ResultSet getFeedback(int sellerID) {
 		try {
 			String query = "Select F.ItemID, Rating,ItemQuality,DeliveryQuality,Comments\n" + 
 					"From GABeS_FEEDBACK F, Gabes_ITEM I\n" + 
