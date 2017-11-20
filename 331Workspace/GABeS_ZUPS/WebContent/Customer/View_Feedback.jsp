@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 <%@ page language="java" import="java.sql.*"%>
 <%@ page language="java" import="java.util.Date.*"%>
+=======
+<%@page language="java" import="java.sql.*"%>
+>>>>>>> e43e9ed37aa5475eee0f81ff21ef280d447e8b9d
 <jsp:useBean id="Feedback" class= "gabes_ZUPS.GABeS_Feedback"/> 
 <jsp:useBean id="account" class= "gabes_ZUPS.GABeS_Account" scope="session"/> 
 <jsp:setProperty name="Item" property="*"/>
