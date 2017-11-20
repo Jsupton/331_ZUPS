@@ -93,7 +93,7 @@
 			<table>
 				<tr>
 					<td>
-						<a href="ListItems.jsp" class="button" style="height:30px;width:250px;line-height:30px">List Items</a>
+						<a href="ViewItemsSelling.jsp" class="button" style="height:30px;width:250px;line-height:30px">List Items</a>
 					</td>
 					<td> This functionality allows the current user to view all items that they have posted.   
 					</td>

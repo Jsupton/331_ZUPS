@@ -131,4 +131,23 @@ public class GABeS_Bids {
 		}
 	}
 	
+	/**
+	 * 
+	 * 
+	 */
+	public ResultSet viewListOfBidders(){
+		try {
+			String query = "Select bidtime as Bid_Time, username, b.MaxBid From GABES_Bids b,GABES_Account a where b.UserID=a.UserID and b.ItemID=? Order by Bid_Time";
+			PreparedStatement ps = openDBConnection().prepareStatement(query);
+			ps.clearParameters();
+			ps.setInt(1, this.getItemID());
+			ResultSet rs = ps.executeQuery();
+			return rs;
+		}
+		catch(SQLException sql) {
+			System.out.println(sql.toString());
+			return null;
+		}
+	}
+	
 }

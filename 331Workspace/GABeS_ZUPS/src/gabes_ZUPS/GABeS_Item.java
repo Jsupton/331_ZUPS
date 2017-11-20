@@ -260,6 +260,28 @@ public class GABeS_Item {
 	/**
 	 * 
 	 */
+	public String getCurrentWinner() {
+		try {
+			String winner = "";
+			String query = "Select GABeS_Current_Winner(?) from Dual";
+			PreparedStatement ps = openDBConnection().prepareStatement(query);
+			ps.clearParameters();
+			ps.setInt(1, this.getItemID());
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				winner = rs.getString(1);
+			}
+			return winner;
+		}
+		catch(SQLException sql) {
+			System.out.println(sql.getMessage());
+			return null;
+		}
+	}
+	
+	/**
+	 * 
+	 */
 	public void setItemInfo() {
 		try {
 			String query = "Select ItemName,Categories,StartTime,EndTime,StartPrice,Status,Description,SellerID from Gabes_Item where ItemID =?";
@@ -289,10 +311,30 @@ public class GABeS_Item {
 	public ResultSet getItemsBidOn(int userID) {
 		try {
 			String query = "Select Distinct i.ItemID,i.ItemName,i.Categories,i.StartTime,i.EndTime,GABeS_Current_Bid(i.ItemID) as CurrentBid,"
-					+ "GABeS_Current_Winner(i.ItemID) as CurrentWinner from Gabes_Item i,Gabes_Bids b where b.UserID="+userID+" and i.ItemID=b.ItemID "
+					+ "GABeS_Current_Winner(i.ItemID) as CurrentWinner from Gabes_Item i,Gabes_Bids b where b.UserID=? and i.ItemID=b.ItemID "
 					+ "and i.endTime>Current_Timestamp";
 			PreparedStatement ps = openDBConnection().prepareStatement(query);
 			ps.clearParameters();
+			ps.setInt(1,userID);
+			ResultSet rs = ps.executeQuery();
+			return rs;
+		}
+		catch(SQLException sql) {
+			System.out.println(sql.getMessage());
+			return null;
+		}
+	}
+	
+	/**
+	 * 
+	 */
+	public ResultSet getItemsSelling(int userID) {
+		try {
+			String query = "Select i.ItemID,i.ItemName,i.Categories,i.StartTime,i.EndTime,startPrice,GABeS_Current_Bid(i.ItemID) as CurrentBid,"
+					+ " Status from Gabes_Item i where i.sellerID=? Order by i.itemID ";
+			PreparedStatement ps = openDBConnection().prepareStatement(query);
+			ps.clearParameters();
+			ps.setInt(1,userID);
 			ResultSet rs = ps.executeQuery();
 			return rs;
 		}
