@@ -103,7 +103,7 @@ ResultSet rs = item.getItemsBought(account.getUserID());
 				<p style="line-height:0px"><b>List of Items Bought</b></p>
 			</div>
 			<br/>
-			<div style="padding:15px;border: solid 2px #000;width:1000px;height:auto;margin-left:auto;
+			<div style="padding:15px;border: solid 2px #000;width:1050px;height:auto;margin-left:auto;
 						margin-right:auto;text-align: center;background-color:white;box-shadow: 10px 10px 5px #888888">
 					<table>
 					<tr>
@@ -122,8 +122,8 @@ ResultSet rs = item.getItemsBought(account.getUserID());
 						<td><%=rs.getInt(1)%></td>
 						<td><%=rs.getString(2) %></td>
 						<td><%=rs.getString(3) %></td>
-						<td><%=rs.getString(4) %></td>
-						<td><%=rs.getString(5) %></td>
+						<td><%=item.getDate(rs.getTimestamp(4)) %></td>
+						<td><%=item.getDate(rs.getTimestamp(5)) %></td>
 						<td><%=rs.getString(6) %></td>
 						<td><%=rs.getString(7) %></td>
 						<td><%=rs.getString(8) %></td>

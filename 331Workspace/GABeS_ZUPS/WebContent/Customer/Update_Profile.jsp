@@ -92,14 +92,14 @@
   				<li style="line-height:30px"><a href="../Logout_action.jsp">Logout</a></li>
 			</ul>
 		</div>
-		<div style="background-color:#eaeaea;width:100%;height:700px;border:solid 2px white">
+		<div style="background-color:#eaeaea;width:100%;height:auto;border:solid 2px white">
 		<br/>
 		<br/>
 		<div style="font-size:22px;background-color:#95C6C3;border:solid 2px white;width:175px;height:40px;margin-left:auto;margin-right:auto;text-align: center;">
 			<p style="line-height:0px"><b>User Profile</b></p>
 		</div>
 		<br/>
-			<div style="padding:15px;padding-bottom:0px;border: solid 2px #000;max-width:475px;min-width:475px;height:auto;margin-left:27%;margin-right:25%;display: inline-block;text-align: center;background-color:white;box-shadow: 10px 10px 5px #888888">
+			<div style="padding:15px;padding-bottom:0px;border: solid 2px #000;width:475px;height:auto;margin-left:auto;margin-right:auto;text-align: center;background-color:white;box-shadow: 10px 10px 5px #888888">
 				<form method="post" action="Update_Profile_action.jsp" name="Login" >
 					<table>
 						<tr>

@@ -10,9 +10,11 @@ try{
 	if(CurrentBid>Bid.getMaxBid()){
 		response.sendRedirect("SearchResults.jsp?Error=1");
 	}
-	Bid.setUserID(account.getUserID());
-	Bid.bidOnItem();
-	response.sendRedirect("SearchResults.jsp?Error=0");
+	else{
+		Bid.setUserID(account.getUserID());
+		Bid.bidOnItem();
+		response.sendRedirect("SearchResults.jsp?Error=0");
+	}
 }
 catch(Exception e){
 	System.out.println(e.toString());

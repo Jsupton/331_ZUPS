@@ -142,7 +142,7 @@ ResultSet rs = item.getItemsSelling(account.getUserID());
 										<input type="hidden" name="itemID" value=<%=rs.getInt(1)%>></td>
 								</form>
 							<%}else{ %>
-							<td>-</td>
+							<td style="text-align:center">----</td>
 							<%} %>
 						</tr>
 					<%}while(rs.next()); %>

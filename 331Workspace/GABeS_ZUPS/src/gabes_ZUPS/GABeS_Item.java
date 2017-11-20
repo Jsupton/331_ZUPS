@@ -310,6 +310,8 @@ public class GABeS_Item {
 	
 	/**
 	 * 
+	 * @param userID
+	 * @return
 	 */
 	public ResultSet getItemsBidOn(int userID) {
 		try {
@@ -328,6 +330,11 @@ public class GABeS_Item {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param userID
+	 * @return
+	 */
 	public ResultSet getItemsBought(int userID) {
 		try {
 			String query = "SELECT Distinct b.itemID, i.itemName, i.Categories, i.startTime, i.endtime,i.StartPrice, GABeS_CURRENT_BID(i.itemid) as Final_Selling_Price,\n" + 
@@ -413,12 +420,13 @@ public class GABeS_Item {
 	
 	/**
 	 * 
+	 * @return
 	 */
 	public String getCurrentDate() {
 		String day = new SimpleDateFormat("dd").format(Calendar.getInstance().getTime());
 		String month = new SimpleDateFormat("MMM").format(Calendar.getInstance().getTime());
 		String year = new SimpleDateFormat("yyyy").format(Calendar.getInstance().getTime());
-		return day + "/"+ month + "/" + year;
+		return day + "-"+ month + "-" + year;
 	}
 	
 	public String getDate(Timestamp date) {

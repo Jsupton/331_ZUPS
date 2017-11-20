@@ -73,6 +73,9 @@ ResultSet rs = Bid.viewListOfBidders();
     		width:300px;
     		border: 5px solid white;
 		}
+		th {
+    		font-size:20px;
+		}
 		table{
 			border-collapse: collapse;
 			background-color:#f5f5f5;
@@ -124,10 +127,10 @@ ResultSet rs = Bid.viewListOfBidders();
 					</tr>
 					<%} %>
 					<tr>
-						<td>Winner</td>
-						<td><%=item.getCurrentWinner()%></td>
+						<td><b>Winner</b></td>
+						<td><b><%=item.getCurrentWinner()%></b></td>
 						<td></td>
-						<td><%=item.getCurrentBid()%></td>
+						<td><b><%=item.getCurrentBid()%></b></td>
 					</tr>
 					<tr >
 						<td></td>

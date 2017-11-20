@@ -7,6 +7,6 @@
 <%	
 String endtime = request.getParameter("endDay") + "/" + request.getParameter("endMonth") + "/" + request.getParameter("endYear");
 item.setEndTime(endtime);
-item.insertNewItem(account.getUserID());
+item.insertNewItem(account.getUserID()); 
 response.sendRedirect("ViewItemsSelling.jsp");
 %>

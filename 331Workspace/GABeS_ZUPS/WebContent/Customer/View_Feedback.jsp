@@ -1,14 +1,10 @@
-<<<<<<< HEAD
 <%@ page language="java" import="java.sql.*"%>
 <%@ page language="java" import="java.util.Date.*"%>
-=======
-<%@page language="java" import="java.sql.*"%>
->>>>>>> e43e9ed37aa5475eee0f81ff21ef280d447e8b9d
 <jsp:useBean id="Feedback" class= "gabes_ZUPS.GABeS_Feedback"/> 
 <jsp:useBean id="account" class= "gabes_ZUPS.GABeS_Account" scope="session"/> 
-<jsp:setProperty name="Item" property="*"/>
+
 <%
-	ResultSet rs = Feedback.getFeedback(account.getUserID());
+	ResultSet rs = Feedback.getFeedback(account.getUserID()); 
 %>
 
 <html style="background-color:white"> 
@@ -37,22 +33,6 @@
     		border: 3px solid #95C6C3;
     		color: white;
     	}
-    	
-    	.button2 {
-    		background-color: #eeeeee;
-    		border: 2px solid #dddddd;
-    		color: #aaaaaa;
-    		font-weight:bold;
-    		padding: 15px 32px;
-    		text-align: center;
-    		text-decoration: none;
-    		display: inline-block;
-    		font-size: 18px;
-    		cursor: pointer;
-    		width:200px;
-    		height:75%;
-    		}
-    	
 		ul {
    			list-style-type: none;
     		margin: auto;
@@ -86,23 +66,12 @@
 		}
 		
 		td {
-    		padding: 5;
+    		padding: 10px;
     		width:300px;
     		border: 5px solid white;
 		}
 		table{
-			border-collapse: collapse;<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+			border-collapse: collapse;
 			background-color:#f5f5f5;
 		}
 	</style>
@@ -114,7 +83,7 @@
 		</div>
 		<div style="background-color:#777">
 			<ul style="width:900px">
-  				<li style="line-height:30px"><a class="active" href="../../Customer_Welcome.jsp">Home</a></li>
+  				<li style="line-height:30px"><a class="active" href="Customer_Welcome.jsp">Home</a></li>
   				<li><a href="Update_Profile.jsp">Update Profile</a></li>
   				<li><a href="Selling/Selling_Management.jsp">Selling Management</a></li>
   				<li><a href="../Bidding_Management.jsp">Bidding Management</a></li>
@@ -124,37 +93,39 @@
 			</ul>
 		</div>
 		<div style="background-color:#eaeaea;width:100%;height:auto;border:solid 2px white">
-		<br/>
-		<br/>
-		<div style="font-size:22px;background-color:#95C6C3;border:solid 2px white;width:300px;height:40px;margin-left:auto;margin-right:auto;text-align: center;">
-			<p style="line-height:0px"><b>View Feedback</b></p>
-		</div>
-		<br/>
-		<%while(rs.next()){ %>
-			<div style="padding-top:15px;padding-left:15px;padding-right:15px;border: solid 2px #000;width:475px;height:auto;margin-left:auto;margin-right:auto;text-align: center;background-color:white;box-shadow: 10px 10px 5px #888888">
+			<br/>
+			<br/>
+			<div style="font-size:22px;background-color:#95C6C3;border:solid 2px white;width:300px;height:40px;margin-left:auto;margin-right:auto;text-align: center;">
+				<p style="line-height:0px"><b>View Feedback</b></p>
+			</div>
+			<%if(rs!=null && rs.next()) {%>
+			<br/>
+			<div style="padding:15px;padding-bottom:10px;border: solid 2px #000;width:700px;height:auto;margin-left:auto;margin-right:auto;text-align: center;background-color:white;box-shadow: 10px 10px 5px #888888">
 				<table>
 					<tr>
-						<td style="width:80px"><b>Item ID</b></td>
+						<th><b>Item ID</b></th>
+						<th><b>Rating</b></th>
+						<th><b>ItemQuality</b></th>
+						<th><b>DeliveryQuality</b></th>
+						<th><b>Comments</b></th>
+					</tr>
+					<%while(rs.next()){ %>
+					<tr>
 						<td><%=rs.getInt(1)%></td>
-					</tr>
-					<tr>
-						<td style="width:80px"><b>Rating</b></td>
 						<td><%=rs.getInt(2)%></td>
-					</tr>
-					<tr>
-						<td style="width:80px"><b>ItemQuality</b></td>
 						<td><%=rs.getInt(3)%></td>
-					</tr>
-					<tr>
-						<td style="width:100px"><b>DeliveryQuality</b></td>
 						<td><%=rs.getInt(4)%></td>
+						<td><%=rs.getString(5)%></td>
 					</tr>
-					<tr>
-						<td style="width:100px"><b>Comments</b></td>
-						<td><%=rs.getInt(4)%></td>
-					</tr>
+					<%} %>
 				</table>
 			</div>
+			<%}else{ %>
+				<br/>
+				<div style="font-size:18px;background-color:#eee;border:solid 2px white;width:900px;height:auto;margin-left:auto;margin-right:auto;text-align: center;">
+					<p style="color:#F88017"><b>YOU DO NOT CURRENTLY HAVE ANY CUSTOMER FEEDBACK</b></p>
+				</div>
+				<br/>
 			<%} %>
 			<br/>
 			<br/>
@@ -162,7 +133,7 @@
 			<br/>
 			<div >
 				<hr style="height:2px;background-color:#777;color:#777;border:solid 1px white;margin-left:20px;margin-right:20px"/>
-				<p style="font-size:12px;margin-left:20px"> <b>Copyright Â©2017 ZUPS. Powered by Upton, Schmidgall, Pekarek, and Zins </b></p>
+				<p style="font-size:12px;margin-left:20px"> <b>Copyright ©2017 ZUPS. Powered by Upton, Schmidgall, Pekarek, and Zins </b></p>
 				<br/>
 				<br/>
 			</div>

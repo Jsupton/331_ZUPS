@@ -97,9 +97,9 @@
 			<p style="line-height:0px"><b>Bid On Item</b></p>
 		</div>
 		<br/>
-			<div style="padding:5px;border: solid 2px #000;width:500px;height:auto;margin-left:auto;margin-right:auto;text-align: center;background-color:white;box-shadow: 10px 10px 5px #888888">
-				<form method="post" action="Bid_action.jsp" name="bidForm" >	
+			<div style="padding:10px;padding-bottom:0px;border: solid 2px #000;width:500px;height:auto;margin-left:auto;margin-right:auto;text-align: center;background-color:white;box-shadow: 10px 10px 5px #888888">	
 					<table>
+						<form method="post" action="Bid_action.jsp" name="bidForm" >
 						<tr>
 							<td style="width:200px">Item ID</td>
 							<td style="width:400px"><input name="itemID" value=<%=Item.getItemID()%> readonly></td>
@@ -120,12 +120,12 @@
 						</tr>
 						<tr style="padding-bottom:0;">
 								<td style="padding:15px;width:200px"><input name="Bid" value="Bid" type="submit" class="button" style="padding:0px;height:auto;margin-right:auto;margin-left:auto"></td>
+							</form>
 							<form method="post" action="SearchResults.jsp" name="cancel" >								
 								<td style="padding:15px"><input type="submit" value="Cancel" class="button" style="padding:0px;height:auto;margin-right:auto;margin-left:auto"></td>
 							</form>
 						</tr>
 					</table>
-				</form>
 			</div>
 			<br/>
 			<br/>
