@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.sql.*"%>
 <%@ page language="java" import="java.util.Date.*"%>
 <jsp:useBean id="search" class= "gabes_ZUPS.GABeS_Search"/> 
+<jsp:useBean id="item" class= "gabes_ZUPS.GABeS_Item"/> 
 <jsp:useBean id="account" class= "gabes_ZUPS.GABeS_Account" scope="session"/> 
 <jsp:setProperty name="search" property="*"/>
 
@@ -143,8 +144,8 @@ String searchCriteria = search.getSearchCriteria();
 							<td><%=rs.getInt(1)%></td>
 							<td><%=rs.getString(2) %></td>
 							<td><%=rs.getString(3) %></td>
-							<td><%=rs.getString(4) %></td>
-							<td><%=rs.getString(5) %></td>
+							<td><%=item.getDate(rs.getTimestamp(4)) %></td>
+							<td><%=item.getDate(rs.getTimestamp(5)) %></td>
 							<td><%=rs.getString(6) %></td>
 							<form method="post" action="View_ItemInfo.jsp" name="ItemInfo">
 								<td><input name="Item-Info" value="Item-Info" type="submit" style="width:auto;height:auto;margin-right:auto;margin-left:auto">

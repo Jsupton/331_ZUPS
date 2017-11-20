@@ -101,7 +101,7 @@
   				<li style="line-height:30px"><a class="active" href="../../Customer_Welcome.jsp">Home</a></li>
   				<li><a href="../Update_Profile.jsp">Update Profile</a></li>
   				<li><a href="../Selling/Selling_Management.jsp">Selling Management</a></li>
-  				<li><a href="Bidding_Management.jsp">Bidding Management</a></li>
+  				<li><a href="../Bidding/Bidding_Management.jsp">Bidding Management</a></li>
   				<li><a href="../Leave_Feedback.jsp">Leave Feedback</a></li>
   				<li><a href="../View_Feedback.jsp">View My Feedback</a></li>
   				<li style="line-height:30px"><a href="../../Logout_action.jsp">Logout</a></li>
@@ -135,11 +135,11 @@
 					</tr>
 					<tr>
 						<td style="width:80px"><b>Auction Starts</b></td>
-						<td><%=rs.getString(5)%></td>
+						<td><%=Item.getDate(rs.getTimestamp(5))%></td>
 					</tr>
 					<tr>
 						<td style="width:80px"><b>Auction Ends</b></td>
-						<td><%=rs.getString(6)%></td>
+						<td><%=Item.getDate(rs.getTimestamp(6))%></td>
 					</tr>
 					<tr>
 						<td style="width:80px"><b>Description</b></td> 

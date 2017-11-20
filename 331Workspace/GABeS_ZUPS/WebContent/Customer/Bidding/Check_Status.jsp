@@ -121,8 +121,8 @@ ResultSet rs = item.getItemsBidOn(account.getUserID());
 						<td><%=rs.getInt(1)%></td>
 						<td><%=rs.getString(2) %></td>
 						<td><%=rs.getString(3) %></td>
-						<td><%=rs.getString(4) %></td>
-						<td><%=rs.getString(5) %></td>
+						<td><%=item.getDate(rs.getTimestamp(4)) %></td>
+						<td><%=item.getDate(rs.getTimestamp(5)) %></td>
 						<td><%=rs.getString(6) %></td>
 						<form method="post" action="View_ItemInfo.jsp" name="ItemInfo">
 							<td><input name="Item-Info" value="Item-Info" type="submit" style="width:auto;height:auto;margin-right:auto;margin-left:auto">
