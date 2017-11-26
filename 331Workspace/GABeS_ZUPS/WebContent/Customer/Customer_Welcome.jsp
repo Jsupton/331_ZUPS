@@ -45,7 +45,7 @@
     		float: left;
     		display:inline;
     		border: 1px solid #ddd;
-    		width:125px;
+    		width:115px;
     		height:60px;
 		}
 
@@ -56,7 +56,7 @@
     		text-align: center;
     		padding: 14px 16px;
     		text-decoration: none;
-    		font-size: 14px;
+    		font-size: 12px;
 		}
 
 		li a:hover {
@@ -82,13 +82,14 @@
 			</div>
 		</div>
 		<div style="background-color:#777;min-width:1000px">
-			<ul style="width:900px">
+			<ul style="width:950px">
   				<li style="line-height:30px"><a class="active" href="Customer_Welcome.jsp">Home</a></li>
   				<li><a href="Update_Profile.jsp">Update Profile</a></li>
   				<li><a href="Selling/Selling_Management.jsp">Selling Management</a></li>
   				<li><a href="Bidding/Bidding_Management.jsp">Bidding Management</a></li>
   				<li><a href="Leave_Feedback.jsp">Leave Feedback</a></li>
   				<li><a href="View_Feedback.jsp">View My Feedback</a></li>
+  				<li><a href="Account_History.jsp">Account History</a></li>
   				<li style="line-height:30px"><a href="../Logout_action.jsp">Logout</a></li>
 			</ul>
 		</div>
@@ -101,7 +102,7 @@
         		   %><br/><span style="text-align:center; color:red"><b>An Error Occurred - UNSUCCESSFUL update</b></span><%
         	   }%>
 		</div>
-		<div style="background-color:#eaeaea;width:100%;height:auto;border:solid 2px white;border-top:none">
+		<div style="background-color:#eaeaea;width:100%;min-width:1000px;height:auto;border:solid 2px white;border-top:none">
 		<br/>
 			<div style="width:950px;margin-left:auto;margin-right:auto;box-shadow: 10px 10px 5px #888888">
 			<table>
@@ -138,6 +139,14 @@
 						<a href="View_Feedback.jsp" class="button" style="height:30px;width:250px;line-height:30px">View My Feedback</a>
 					</td>
 					<td>  Allows the Customer to view all feedback that they have received
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="Account_History.jsp" class="button" style="height:30px;width:250px;line-height:30px">Bidding History</a>
+					</td>
+					<td>  Allows the Customer view previous items bought, and view current items. It allows the user to see how many total items they have bought,
+							how many items the user is currently bidding on, how many items the user is currently winning, and the amount.
 					</td>
 				</tr>
 			</table>

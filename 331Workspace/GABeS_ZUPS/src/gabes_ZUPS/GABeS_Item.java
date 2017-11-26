@@ -1,21 +1,14 @@
 package gabes_ZUPS;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 /**
+ * This class encapsulates the required attributes in the GABeS_Iem table.
+ * This Java Bean class is used in the GABeS Web system.
  * 
- */
-
-/**
+ * Used for the Online Web Bidding System - GABeS
  * @author jsupton
- *
  */
 public class GABeS_Item {
 
@@ -183,7 +176,7 @@ public class GABeS_Item {
 	public void setSeller(int seller) {
 		this.seller = seller;
 	}
-	
+
 	/**
 	 * This method and creates and returns a Connection object to the database. 
 	 * All other methods that need database access should call this method.
@@ -205,7 +198,10 @@ public class GABeS_Item {
 	}
 	
 	/**
-	 * 
+	 * This method is responsible for getting all of the distinct categories in the
+	 * Database. This is used for populating the drop down list for the user to search
+	 * for items by categories
+	 * @return ResultSet with all the distinct categories
 	 */
 	public ResultSet getAllCategories() {
 		try {
@@ -221,7 +217,9 @@ public class GABeS_Item {
 	}
 	
 	/**
-	 * 
+	 * This method is responsible for selecting the item information that the user 
+	 * gets when they search.
+	 * @return ResultSet having the desired query
 	 */
 	public ResultSet getItemInfo() {
 		try {
@@ -239,7 +237,8 @@ public class GABeS_Item {
 	}
 	
 	/**
-	 * 
+	 * This method gets the current bid of the specific item.
+	 * @return double representing the current bid
 	 */
 	public double getCurrentBid() {
 		try {
@@ -261,7 +260,9 @@ public class GABeS_Item {
 	}
 	
 	/**
-	 * 
+	 * This method calls a function that gets the current winner 
+	 * from the database. It returns the account username of the person winning
+	 * @return String representing the current winner
 	 */
 	public String getCurrentWinner() {
 		try {
@@ -283,7 +284,8 @@ public class GABeS_Item {
 	}
 	
 	/**
-	 * 
+	 * This method sets all of the item instance variables in this javabean.
+	 * This allows us to more easily access the item information
 	 */
 	public void setItemInfo() {
 		try {
@@ -309,9 +311,9 @@ public class GABeS_Item {
 	}
 	
 	/**
-	 * 
-	 * @param userID
-	 * @return
+	 * This method gets all the items that the specific user has bid on.
+	 * @param userID the UserId of the specific user
+	 * @return Result set with the desired query
 	 */
 	public ResultSet getItemsBidOn(int userID) {
 		try {
@@ -331,9 +333,9 @@ public class GABeS_Item {
 	}
 	
 	/**
-	 * 
-	 * @param userID
-	 * @return
+	 * This method gets all of the items that the user has actually bought.
+	 * @param userID The specific userID of the current user
+	 * @return ResultSet with the desired query
 	 */
 	public ResultSet getItemsBought(int userID) {
 		try {
@@ -354,7 +356,9 @@ public class GABeS_Item {
 	}
 	
 	/**
-	 * 
+	 * This method gets all of the items that the specific user is selling
+	 * @param userID The specific userID of the current user
+	 * @return ResultSet with the desired query
 	 */
 	public ResultSet getItemsSelling(int userID) {
 		try {
@@ -373,7 +377,9 @@ public class GABeS_Item {
 	}
 	
 	/**
-	 * 
+	 * This method gets the next item iD by getting the current max
+	 * ItemID and adding one to it.
+	 * @return ResultSet with the desired query
 	 */
 	public int getNextItemID() throws IllegalStateException {
 		try {
@@ -394,7 +400,10 @@ public class GABeS_Item {
 	}
 	
 	/**
-	 * 
+	 * This method is responsible for inserting a new Item into the database.
+	 * It takes all of the instance variables and sets them to values in the insert statement
+	 * @param userID The specific userID of the current user
+	 * @return ResultSet with the desired query
 	 */
 	public int insertNewItem(int sellerID) {
 		try {
@@ -405,7 +414,7 @@ public class GABeS_Item {
 			ps.setString(2, this.getItemName());
 			ps.setString(3, this.getCategories());
 			ps.setString(4, this.getStartTime());
-			ps.setString(5, this.getEndTime());
+			ps.setString(5, this.getEndTime()+" 11:59:59 PM");
 			ps.setInt(6, this.getStartPrice());	
 			ps.setString(7, "On Auction");
 			ps.setString(8, this.getDescription());
@@ -419,8 +428,8 @@ public class GABeS_Item {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * This method gets the current date from the System
+	 * @return String the current date 
 	 */
 	public String getCurrentDate() {
 		String day = new SimpleDateFormat("dd").format(Calendar.getInstance().getTime());
@@ -429,6 +438,11 @@ public class GABeS_Item {
 		return day + "-"+ month + "-" + year;
 	}
 	
+	/**
+	 * This method gets the date from a specific time stamp object
+	 * @param date The date that they want to extract
+	 * @return String representing the date without the time.
+	 */
 	public String getDate(Timestamp date) {
 		try {
 			String newDate = "";
@@ -448,5 +462,26 @@ public class GABeS_Item {
 		}
 	}
 	
-	  
+	
+	/**
+	 * This method gets the items that are similar to that of the current item.
+	 * @return ResultSet representing the query
+	 */
+	public ResultSet getSimilarItems(int userID) {
+		try {
+			String query = "Select ItemName, ItemID, GABeS_TIME_REMAINING(ItemID) from GABeS_Item "
+					+ "where EndTime>Current_TimeStamp and Categories=? and sellerID<>? and ItemID<>? and rownum<=5";
+			PreparedStatement ps = openDBConnection().prepareStatement(query);
+			ps.clearParameters();
+			ps.setString(1,this.getCategories());
+			ps.setInt(2,userID);
+			ps.setInt(3,this.getItemID());
+			ResultSet rs = ps.executeQuery();
+			return rs;
+		}
+		catch(SQLException sql) {
+			System.out.println(sql.getMessage());
+			return null;
+		}
+	}	  
 }

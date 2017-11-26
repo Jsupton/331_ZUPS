@@ -46,7 +46,7 @@ ResultSet rs = item.getItemsBought(account.getUserID());
     		float: left;
     		display:inline;
     		border: 1px solid #ddd;
-    		width:125px;
+    		width:115px;
     		height:60px;
 		}
 
@@ -57,7 +57,7 @@ ResultSet rs = item.getItemsBought(account.getUserID());
     		text-align: center;
     		padding: 14px 16px;
     		text-decoration: none;
-    		font-size: 14px;
+    		font-size: 12px;
 		}
 
 		li a:hover {
@@ -86,17 +86,18 @@ ResultSet rs = item.getItemsBought(account.getUserID());
 			</div>
 		</div>
 		<div style="background-color:#777;min-width:1000px">
-			<ul style="width:900px">
+			<ul style="width:950px">
   				<li style="line-height:30px"><a class="active" href="Customer_Welcome.jsp">Home</a></li>
   				<li><a href="Update_Profile.jsp">Update Profile</a></li>
   				<li><a href="Selling/Selling_Management.jsp">Selling Management</a></li>
   				<li><a href="Bidding/Bidding_Management.jsp">Bidding Management</a></li>
   				<li><a href="Leave_Feedback.jsp">Leave Feedback</a></li>
   				<li><a href="View_Feedback.jsp">View My Feedback</a></li>
+  				<li><a href="Account_History.jsp">Account History</a></li>
   				<li style="line-height:30px"><a href="../Logout_action.jsp">Logout</a></li>
 			</ul>
 		</div>
-		<div style="background-color:#eaeaea;width:auto;height:auto;min-height:400px;border:solid 2px white">
+		<div style="background-color:#eaeaea;width:auto;min-width:1000px;height:auto;min-height:400px;border:solid 2px white">
 		<br/>
 		<br/>
 		<%if(rs!=null && rs.next()) {%>

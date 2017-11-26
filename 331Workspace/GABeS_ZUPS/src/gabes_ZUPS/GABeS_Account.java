@@ -168,6 +168,16 @@ public class GABeS_Account {
 		this.isLoggedIn = false;
 	}
 	
+	public void updateStatus() {
+		try {
+			CallableStatement cstmt = openDBConnection().prepareCall( "{call GABeS_UPDATE_STATUS}");
+			cstmt.execute (); 
+		}
+		catch(SQLException sql) {
+			System.out.println(sql.getMessage());
+		}
+	}
+	
 	/**
 	 * This method is used to populate the session variable once the user is
 	 * successfully logged in. When the User logs in successfully, this method is called
@@ -306,7 +316,7 @@ public class GABeS_Account {
 	 */
 	public ResultSet getCommissionReport() throws IllegalStateException {
 		try {
-			String query = "Select R.UserID,A.Username, R.Fname, R.Lname, R.Email, R.Rating, Sum(V.COMMISSION) Commissions " + 
+			String query = "Select R.UserID,A.Username, R.Fname, R.Lname, R.Email, R.Rating, (Sum(V.COMMISSION)) Commissions " + 
 					"From GABeS_SELLER_RATINGS R full outer join GABES_VIEW_ITEMS V on R.USERID=V.USERID, GABES_ACCOUNT A " + 
 					"Where A.USERID = R.USERID " + 
 					"Group by R.UserID,A.Username, R.Fname, R.Lname, R.Email,R.Rating";
@@ -320,4 +330,194 @@ public class GABeS_Account {
 			return null;
 		}
 	}
+	
+	/**
+	 * This method gets the current total bids of all items the user is winning
+	 * @return double representing the current bid amount
+	 */
+	public double getCurrentTotalBids() {
+		try {
+			double bid = 0.0;
+			String query = "Select GABeS_Bids_Current_Total_Money(?) from Dual";
+			PreparedStatement ps = openDBConnection().prepareStatement(query);
+			ps.clearParameters();
+			ps.setInt(1, this.getUserID());
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				bid = rs.getDouble(1);
+			}
+			return bid;
+		}
+		catch(SQLException sql) {
+			System.out.println(sql.getMessage());
+			return 0.0;
+		}
+	}
+	
+	/**
+	 * This method gets the number of bids the user is winning
+	 * @return double representing the current bid amount
+	 */
+	public double getCurrentNumBidsWinning() {
+		try {
+			double bid = 0.0;
+			String query = "Select GABeS_Current_Bids_Winning(?) from Dual";
+			PreparedStatement ps = openDBConnection().prepareStatement(query);
+			ps.clearParameters();
+			ps.setInt(1, this.getUserID());
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				bid = rs.getDouble(1);
+			}
+			return bid;
+		}
+		catch(SQLException sql) {
+			System.out.println(sql.getMessage());
+			return 0.0;
+		}
+	}
+	
+	/**
+	 * This method gets the current total  of all items the user has bought
+	 * @return double representing the current total
+	 */
+	public double getAmountItemsBought() {
+		try {
+			double bid = 0.0;
+			String query = "Select GABeS_Bids_Total_Money(?) from Dual";
+			PreparedStatement ps = openDBConnection().prepareStatement(query);
+			ps.clearParameters();
+			ps.setInt(1, this.getUserID());
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				bid = rs.getDouble(1);
+			}
+			return bid;
+		}
+		catch(SQLException sql) {
+			System.out.println(sql.getMessage());
+			return 0.0;
+		}
+	}
+	
+	/**
+	 * This method gets the number of all items the user has bought
+	 * @return double representing the current total
+	 */
+	public double getNumItemsBought() {
+		try {
+			double bid = 0.0;
+			String query = "Select GABeS_Num_Items_Bought(?) from Dual";
+			PreparedStatement ps = openDBConnection().prepareStatement(query);
+			ps.clearParameters();
+			ps.setInt(1, this.getUserID());
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				bid = rs.getDouble(1);
+			}
+			return bid;
+		}
+		catch(SQLException sql) {
+			System.out.println(sql.getMessage());
+			return 0.0;
+		}
+	}
+	
+	/**
+	 * Method responsible for calculating the number of items that the
+	 * user currently has on sale
+	 * @return double representing the current total
+	 */
+	public double getNumItemsSelling() {
+		try {
+			double bid = 0.0;
+			String query = "Select GABeS_Current_Num_Selling(?) from Dual";
+			PreparedStatement ps = openDBConnection().prepareStatement(query);
+			ps.clearParameters();
+			ps.setInt(1, this.getUserID());
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				bid = rs.getDouble(1);
+			}
+			return bid;
+		}
+		catch(SQLException sql) {
+			System.out.println(sql.getMessage());
+			return 0.0;
+		}
+	}
+	
+	/**
+	 * Method responsible for calculating the dollar amount of the items
+	 * the user is currently selling. It adds up all the current bids of 
+	 * the user's items
+	 * @return double representing the current amount on sale
+	 */
+	public double getAmountItemsSelling() {
+		try {
+			double bid = 0.0;
+			String query = "Select GABeS_Current_Amount_Selling(?) from Dual";
+			PreparedStatement ps = openDBConnection().prepareStatement(query);
+			ps.clearParameters();
+			ps.setInt(1, this.getUserID());
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				bid = rs.getDouble(1);
+			}
+			return bid*0.95;
+		}
+		catch(SQLException sql) {
+			System.out.println(sql.getMessage());
+			return 0.0;
+		}
+	}
+	
+	/**
+	 * Method responsible for calculating the total number of items 
+	 * that the current user has sold
+	 * @return double representing the current number sold
+	 */
+	public double getNumItemsSold() {
+		try {
+			double bid = 0.0;
+			String query = "Select GABeS_Total_Num_Sold(?) from Dual";
+			PreparedStatement ps = openDBConnection().prepareStatement(query);
+			ps.clearParameters();
+			ps.setInt(1, this.getUserID());
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				bid = rs.getDouble(1);
+			}
+			return bid;
+		}
+		catch(SQLException sql) {
+			System.out.println(sql.getMessage());
+			return 0.0;
+		}
+	}
+	
+	/**
+	 * Method responsible for returning the total dollar amount that the current
+	 * user has sold.
+	 * @return double representing the current total sold
+	 */
+	public double getAmountItemsSold() {
+		try {
+			double bid = 0.0;
+			String query = "Select GABeS_Total_Amount_Sold(?) from Dual";
+			PreparedStatement ps = openDBConnection().prepareStatement(query);
+			ps.clearParameters();
+			ps.setInt(1, this.getUserID());
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				bid = rs.getDouble(1);
+			}
+			return bid*0.95;
+		}
+		catch(SQLException sql) {
+			System.out.println(sql.getMessage());
+			return 0.0;
+		}
+	}
+	
 }

@@ -6,6 +6,9 @@
 <%	
 String endtime = request.getParameter("endDay") + "/" + request.getParameter("endMonth") + "/" + request.getParameter("endYear");
 item.setEndTime(endtime);
-item.insertNewItem(account.getUserID()); 
-response.sendRedirect("ViewItemsSelling.jsp");
+int i = item.insertNewItem(account.getUserID()); 
+if(i>0)
+	response.sendRedirect("ViewItemsSelling.jsp?Error=0");
+else
+	response.sendRedirect("ViewItemsSelling.jsp?Error=1");
 %>

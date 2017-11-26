@@ -139,7 +139,7 @@
 						</tr>
 						<tr>
 							<td>Username</td>
-							<td><input name="username" required></td>
+							<td><input name="userName" required></td>
 						</tr>
 						<tr>
 							<td>First Name</td>

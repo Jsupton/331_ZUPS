@@ -2,6 +2,7 @@
 <%@include file="Security.jsp"%>
 <jsp:useBean id="Item" class= "gabes_ZUPS.GABeS_Item"/> 
 <jsp:setProperty name="Item" property="*"/>
+
 <%
 	ResultSet rs = Item.getItemInfo();
 %>
@@ -60,7 +61,7 @@
     		float: left;
     		display:inline;
     		border: 1px solid #ddd;
-    		width:125px;
+    		width:115px;
     		height:60px;
 		}
 
@@ -71,7 +72,7 @@
     		text-align: center;
     		padding: 14px 16px;
     		text-decoration: none;
-    		font-size: 14px;
+    		font-size: 12px;
 		}
 
 		li a:hover {
@@ -96,26 +97,28 @@
 				<h1 style="text-align:center"><img src="../../Images/GABES.png" style="width:200px;height:50px;padding-top:25px"> Item Information</h1>
 			</div>
 		</div>
-		<div style="background-color:#777">
-			<ul style="width:900px">
-  				<li style="line-height:30px"><a class="active" href="../../Customer_Welcome.jsp">Home</a></li>
+		<div style="background-color:#777;min-width:1000px">
+			<ul style="width:950px">
+  				<li style="line-height:30px"><a class="active" href="../Customer_Welcome.jsp">Home</a></li>
   				<li><a href="../Update_Profile.jsp">Update Profile</a></li>
-  				<li><a href="../Selling/Selling_Management.jsp">Selling Management</a></li>
+  				<li><a href="Selling_Management.jsp">Selling Management</a></li>
   				<li><a href="../Bidding/Bidding_Management.jsp">Bidding Management</a></li>
   				<li><a href="../Leave_Feedback.jsp">Leave Feedback</a></li>
   				<li><a href="../View_Feedback.jsp">View My Feedback</a></li>
+  				<li><a href="../Account_History.jsp">Account History</a></li>
   				<li style="line-height:30px"><a href="../../Logout_action.jsp">Logout</a></li>
 			</ul>
 		</div>
-		<div style="background-color:#eaeaea;width:100%;height:auto;border:solid 2px white">
+		<div style="background-color:#eaeaea;width:100%;min-width:1000px;height:auto;border:solid 2px white">
 		<br/>
 		<br/>
 		<div style="font-size:22px;background-color:#8AC0D1;border:solid 2px white;width:175px;height:40px;margin-left:auto;margin-right:auto;text-align: center;">
 			<p style="line-height:0px"><b>Item Info</b></p>
 		</div>
 		<br/>
+		<br/>
 		<%while(rs.next()){ %>
-			<div style="padding-top:15px;padding-left:15px;padding-right:15px;border: solid 2px #000;width:475px;height:auto;margin-left:auto;margin-right:auto;text-align: center;background-color:white;box-shadow: 10px 10px 5px #888888">
+			<div style="padding:15px;border: solid 2px #000;width:475px;height:auto;margin-left:auto;margin-right:auto;text-align: center;background-color:white;box-shadow: 10px 10px 5px #888888">
 				<table>
 					<tr>
 						<td style="width:80px"><b>Item ID</b></td>
@@ -143,7 +146,12 @@
 					</tr>
 					<tr>
 						<td style="width:80px"><b>Description</b></td> 
-						<td><%=rs.getString(7)%></td>
+						<%String des = rs.getString(7);
+							if(des == null){%>
+							<td style="text-align:center">-----</td>
+						<%}else{ %>
+							<td><%=des%></td>
+						<%} %>
 					</tr> 
 					<tr>
 						<form method="post" action="ViewItemsSelling.jsp" name="cancel" >								

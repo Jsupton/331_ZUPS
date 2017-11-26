@@ -140,7 +140,8 @@ public class GABeS_Bids {
 	 */
 	public ResultSet viewListOfBidders(){
 		try {
-			String query = "Select bidtime as Bid_Time, username, b.MaxBid From GABES_Bids b,GABES_Account a where b.UserID=a.UserID and b.ItemID=? Order by Bid_Time";
+			String query = "Select bidtime as Bid_Time, username, b.MaxBid From GABES_Bids b,GABES_Account a "
+					+ "where b.UserID=a.UserID and b.ItemID=? Order by Bid_Time,b.MaxBid";
 			PreparedStatement ps = openDBConnection().prepareStatement(query);
 			ps.clearParameters();
 			ps.setInt(1, this.getItemID());

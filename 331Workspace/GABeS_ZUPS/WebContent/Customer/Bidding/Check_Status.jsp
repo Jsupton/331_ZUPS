@@ -46,7 +46,7 @@ ResultSet rs = item.getItemsBidOn(account.getUserID());
     		float: left;
     		display:inline;
     		border: 1px solid #ddd;
-    		width:125px;
+    		width:115px;
     		height:60px;
 		}
 
@@ -57,7 +57,7 @@ ResultSet rs = item.getItemsBidOn(account.getUserID());
     		text-align: center;
     		padding: 14px 16px;
     		text-decoration: none;
-    		font-size: 14px;
+    		font-size: 12px;
 		}
 
 		li a:hover {
@@ -85,17 +85,18 @@ ResultSet rs = item.getItemsBidOn(account.getUserID());
 			</div>
 		</div>
 		<div style="background-color:#777;min-width:1000px">
-			<ul style="width:900px">
+			<ul style="width:950px">
   				<li style="line-height:30px"><a class="active" href="../Customer_Welcome.jsp">Home</a></li>
   				<li><a href="../Update_Profile.jsp">Update Profile</a></li>
   				<li><a href="../Selling/Selling_Management.jsp">Selling Management</a></li>
   				<li><a href="Bidding_Management.jsp">Bidding Management</a></li>
   				<li><a href="../Leave_Feedback.jsp">Leave Feedback</a></li>
   				<li><a href="../View_Feedback.jsp">View My Feedback</a></li>
+  				<li><a href="../Account_History.jsp">Account History</a></li>
   				<li style="line-height:30px"><a href="../../Logout_action.jsp">Logout</a></li>
 			</ul>
 		</div>
-		<div style="background-color:#eaeaea;width:auto;height:auto;border:solid 2px white">
+		<div style="background-color:#eaeaea;width:auto;min-width:1000px;height:auto;min-height:400px;border:solid 2px white">
 		<br/>
 		<br/>
 		<%if(rs!=null && rs.next()) {%>
@@ -124,7 +125,7 @@ ResultSet rs = item.getItemsBidOn(account.getUserID());
 						<td><%=item.getDate(rs.getTimestamp(4)) %></td>
 						<td><%=item.getDate(rs.getTimestamp(5)) %></td>
 						<td><%=rs.getString(6) %></td>
-						<form method="post" action="View_ItemInfo.jsp" name="ItemInfo">
+						<form method="post" action="Item_Info.jsp" name="ItemInfo">
 							<td><input name="Item-Info" value="Item-Info" type="submit" style="width:auto;height:auto;margin-right:auto;margin-left:auto">
 								<input type="hidden" name="itemID" value=<%=rs.getInt(1)%>></td>
 						</form>
@@ -141,10 +142,10 @@ ResultSet rs = item.getItemsBidOn(account.getUserID());
 			<br/>
 			<br/>
 			<br/>
-			<div >
-				<hr style="height:2px;background-color:#777;color:#777;border:solid 1px white;margin-left:20px;margin-right:20px"/>
-				<p style="font-size:12px;margin-left:20px"> <b>Copyright ©2017 ZUPS. Powered by Upton, Schmidgall, Pekarek, and Zins </b></p>
-			</div>
+		</div>
+		<div style="margin-top:-50px">
+			<hr style="height:2px;background-color:#777;color:#777;border:solid 1px white;margin-left:20px;margin-right:20px"/>
+			<p style="font-size:12px;margin-left:20px"> <b>Copyright ©2017 ZUPS. Powered by Upton, Schmidgall, Pekarek, and Zins </b></p>
 		</div>
 	</body>
 </html>
