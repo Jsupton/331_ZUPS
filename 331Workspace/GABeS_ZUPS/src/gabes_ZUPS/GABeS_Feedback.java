@@ -169,5 +169,53 @@ public class GABeS_Feedback {
 			return null;
 		}
 	}
+	
+	/**
+	 * This method is responsible for inserting a new feedback into the database.
+	 * It takes all of the instance variables and sets them to values in the insert statement
+	 * @return ResultSet with the desired query
+	 */
+	public int insertNewFeedback() {
+		try {
+			String query = "Insert into Gabes_Feedback values(?, ?, ?, ?, ?, ?)";
+			PreparedStatement ps = openDBConnection().prepareStatement(query);
+			ps.clearParameters();
+			ps.setInt(1, this.getBuyerID());
+			ps.setInt(2, this.getItemID());
+			ps.setInt(3, this.getRating());
+			ps.setInt(4, this.getItemQuality());
+			ps.setInt(5, this.getDeliveryQuality());
+			ps.setString(6, this.getComments());	
+			return ps.executeUpdate();
+		}
+		catch(SQLException sql) {
+			System.out.println(sql.getMessage());
+			return -1;
+		}
+	}
+	
+	/**
+	 * 
+	 * @return ResultSet with the desired query
+	 */
+	public boolean openFeedback(int BuyerID,int ItemID) {
+		try {
+			boolean b = false;
+			String query = "Select * From GABeS_Feedback Where buyerID=? and ItemID=?";
+			PreparedStatement ps = openDBConnection().prepareStatement(query);
+			ps.clearParameters();
+			ps.setInt(1, BuyerID);
+			ps.setInt(2, ItemID);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				b = true;
+			}
+			return b;
+		}
+		catch(SQLException sql) {
+			System.out.println(sql.getMessage());
+			return false;
+		}
+	}
 	  
 }

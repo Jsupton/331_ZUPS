@@ -176,6 +176,8 @@ public class GABeS_Item {
 	public void setSeller(int seller) {
 		this.seller = seller;
 	}
+	
+
 
 	/**
 	 * This method and creates and returns a Connection object to the database. 
@@ -339,7 +341,7 @@ public class GABeS_Item {
 	 */
 	public ResultSet getItemsBought(int userID) {
 		try {
-			String query = "SELECT Distinct b.itemID, i.itemName, i.Categories, i.startTime, i.endtime,i.StartPrice, GABeS_CURRENT_BID(i.itemid) as Final_Selling_Price,\n" + 
+			String query = "SELECT Distinct b.itemID, i.itemName, i.Categories, i.startTime, i.endtime,i.StartPrice,i.SellerID, GABeS_CURRENT_BID(i.itemid) as Final_Selling_Price,\n" + 
 					"      	(Select Username From GABeS_ACCOUNT A Where A.UserID = i.SellerID) as Seller_Username,(Select email From GABeS_CUSTOMER C Where C.UserID = i.SellerID) as Seller_Email\n" + 
 					"FROM gabes_item i,GABeS_BIDS B, GABeS_ACCOUNT A\n" + 
 					"WHERE i.ItemID = b.ItemID and B.UserID = A.UserID and i.endTime < CURRENT_TIMESTAMP and GABeS_CURRENT_WINNER(i.itemid) = A.username and A.UserID = ?";

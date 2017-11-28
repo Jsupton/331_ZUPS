@@ -97,6 +97,15 @@ ResultSet rs = item.getItemsBought(account.getUserID());
   				<li style="line-height:30px"><a href="../Logout_action.jsp">Logout</a></li>
 			</ul>
 		</div>
+		<div style="font-size:18px;border-left:solid 2px white;border-right:solid 2px white;background-color:#eaeaea;width:100%;height:inherit;margin-left:auto;margin-right:auto;text-align: center;">
+			<% String anyErrors = request.getParameter("Error");
+			   if(anyErrors!=null && anyErrors.equals("0")){
+            		%><br/><span style="text-align:center; color:green"><b>Feedback Received SUCCESSFULLY</b></span><%
+       		    }
+        	   else if(anyErrors!=null && anyErrors.equals("1")){
+        		   %><br/><span style="text-align:center; color:red"><b>An Error Occurred - UNSUCCESSFUL rating</b></span><%
+        	   }%>
+		</div>
 		<div style="background-color:#eaeaea;width:auto;min-width:1000px;height:auto;min-height:400px;border:solid 2px white">
 		<br/>
 		<br/>
@@ -127,13 +136,17 @@ ResultSet rs = item.getItemsBought(account.getUserID());
 						<td><%=item.getDate(rs.getTimestamp(4)) %></td>
 						<td><%=item.getDate(rs.getTimestamp(5)) %></td>
 						<td><%=rs.getString(6) %></td>
-						<td><%=rs.getString(7) %></td>
 						<td><%=rs.getString(8) %></td>
 						<td><%=rs.getString(9) %></td>
+						<td><%=rs.getString(10) %></td>
+						<%if(Feedback.openFeedback(account.getUserID(),rs.getInt(1))){%>
 						<form method="post" action="Rate_Seller.jsp" name="rating">
 							<td><input name="Rate-Seller" value="Rate-Seller" type="submit" style="width:auto;height:auto;margin-right:auto;margin-left:auto">
-								<input type="hidden" name="Rate Seller" value=<%=rs.getString(8)%>></td>
+								<input type="hidden" name="itemID" value=<%=rs.getInt(1)%>></td>
 						</form>
+						<%}else{ %>
+							<td><input name="Rate-Seller" value="Rate-Seller" type="submit" style="width:auto;height:auto;margin-right:auto;margin-left:auto" disabled></td>
+						<%}%>
 				<%}while(rs.next()); %>
 				</table>
 			</div>

@@ -110,7 +110,7 @@
 						<th><b>DeliveryQuality</b></th>
 						<th><b>Comments</b></th>
 					</tr>
-					<%while(rs.next()){ %>
+					<%do{ %>
 					<tr>
 						<td><%=rs.getInt(1)%></td>
 						<td><%=rs.getInt(2)%></td>
@@ -118,7 +118,7 @@
 						<td><%=rs.getInt(4)%></td>
 						<td><%=rs.getString(5)%></td>
 					</tr>
-					<%} %>
+					<%}while(rs.next()); %>
 				</table>
 			</div>
 			<%}else{ %>
