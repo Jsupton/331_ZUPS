@@ -130,7 +130,7 @@ ResultSet rs = item.getItemsBought(account.getUserID());
 						<td><%=rs.getString(7) %></td>
 						<td><%=rs.getString(8) %></td>
 						<td><%=rs.getString(9) %></td>
-						<form method="post" action="View_ItemInfo.jsp" name="ItemInfo">
+						<form method="post" action="Rate_Seller.jsp" name="rating">
 							<td><input name="Rate-Seller" value="Rate-Seller" type="submit" style="width:auto;height:auto;margin-right:auto;margin-left:auto">
 								<input type="hidden" name="Rate Seller" value=<%=rs.getString(8)%>></td>
 						</form>
