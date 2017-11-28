@@ -108,6 +108,13 @@
 					<td>  Allows the Customer to view all items that are currently on bid.
 					</td>
 				</tr>
+				<tr>
+					<td>
+						<a href="BiddingHistory.jsp" class="button" style="height:30px;width:250px;line-height:30px">History</a>
+					</td>
+					<td>  Allows the Customer to view all items that they have bid on in the past.
+					</td>
+				</tr>
 			</table>
 			</div>
 			<br/>

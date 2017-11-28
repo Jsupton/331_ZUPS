@@ -108,6 +108,13 @@
 					<td> This functionality allows the current user to add a new item to put on auction
 					</td>
 				</tr>
+				<tr>
+					<td>
+						<a href="SellingHistory.jsp" class="button" style="height:30px;width:250px;line-height:30px">History</a>
+					</td>
+					<td> This functionality allows the current user to view their selling history.   
+					</td>
+				</tr>
 			</table>
 			</div>
 			<br/>
