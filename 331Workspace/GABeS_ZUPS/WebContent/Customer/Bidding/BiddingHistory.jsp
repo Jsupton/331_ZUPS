@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.sql.*"%>
-<%@include file="Security.jsp"%>
+<%@include file="../Selling/Security.jsp"%>
 <jsp:useBean id="Bid" class= "gabes_ZUPS.GABeS_Bids"/>
 <%
 	
@@ -126,7 +126,7 @@
 						<td><b><i>TOTAL:</i></b> <%=account.getAmountItemsBought()%></td>
 					</tr>
 					<tr>
-						<form method="post" action="../Customer_Welcome.jsp" name="cancel" >								
+						<form method="post" action="Bidding_Management.jsp" name="cancel" >								
 							<td style="padding:15px" colspan="3"><input type="submit" value="Back" class="button" style="padding:0px;width:200px;height:auto;margin-right:auto;margin-left:110px"></td>
 						</form>
 					</tr>

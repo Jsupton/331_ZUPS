@@ -200,7 +200,7 @@ public class GABeS_Feedback {
 	 */
 	public boolean openFeedback(int BuyerID,int ItemID) {
 		try {
-			boolean b = false;
+			boolean b = true;
 			String query = "Select * From GABeS_Feedback Where buyerID=? and ItemID=?";
 			PreparedStatement ps = openDBConnection().prepareStatement(query);
 			ps.clearParameters();
@@ -208,13 +208,13 @@ public class GABeS_Feedback {
 			ps.setInt(2, ItemID);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
-				b = true;
+				b = false;
 			}
 			return b;
 		}
 		catch(SQLException sql) {
 			System.out.println(sql.getMessage());
-			return false;
+			return true;
 		}
 	}
 	  

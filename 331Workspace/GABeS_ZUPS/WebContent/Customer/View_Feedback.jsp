@@ -101,14 +101,14 @@
 			</div>
 			<%if(rs!=null && rs.next()) {%>
 			<br/>
-			<div style="padding:15px;padding-bottom:10px;border: solid 2px #000;width:700px;height:auto;margin-left:auto;margin-right:auto;text-align: center;background-color:white;box-shadow: 10px 10px 5px #888888">
+			<div style="padding:15px;padding-bottom:10px;border: solid 2px #000;width:800px;height:auto;margin-left:auto;margin-right:auto;text-align: center;background-color:white;box-shadow: 10px 10px 5px #888888">
 				<table>
 					<tr>
 						<th><b>Item ID</b></th>
 						<th><b>Rating</b></th>
 						<th><b>ItemQuality</b></th>
 						<th><b>DeliveryQuality</b></th>
-						<th><b>Comments</b></th>
+						<th style="width:800px"><b>Comments</b></th>
 					</tr>
 					<%do{ %>
 					<tr>
@@ -116,7 +116,7 @@
 						<td><%=rs.getInt(2)%></td>
 						<td><%=rs.getInt(3)%></td>
 						<td><%=rs.getInt(4)%></td>
-						<td><%=rs.getString(5)%></td>
+						<td style="width:800px"><%=rs.getString(5)%></td>
 					</tr>
 					<%}while(rs.next()); %>
 				</table>

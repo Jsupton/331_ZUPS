@@ -83,7 +83,7 @@
 	<body>
 		<div style="background-color:#8AC0D1;width:100%;min-width:1000px;height:190px;border:solid 3px white">
 			<div style="background-color:White;width:70%;min-width:650px;height:110px;margin-left:auto;margin-right:auto;box-shadow: 10px 10px 5px #777">
-				<h1 style="text-align:center"><img src="../../Images/GABES.png" style="width:200px;height:50px;padding-top:25px"> Bidding History</h1>
+				<h1 style="text-align:center"><img src="../../Images/GABES.png" style="width:200px;height:50px;padding-top:25px"> Selling History</h1>
 			</div>
 		</div>
 		<div style="background-color:#777;min-width:1000px">
@@ -118,15 +118,15 @@
 					<tr>
 						<td><b><h>Current Items On Auction</h></b></td>
 						<td><%=account.getNumItemsSelling()%></td>
-						<td><b><i>TOTAL:</i></b> <%=account.getAmountItemsSelling() %></td>
+						<td><b><i>TOTAL:</i></b> <%=Math.round(account.getAmountItemsSelling()*100.0)/100.0 %><span style="color:red">***</span></td>
 					</tr>
 					<tr>
 						<td><b>Current Items Sold</b></td>
 						<td><%=account.getNumItemsSold() %></td>
-						<td><b><i>TOTAL:</i></b> <%=account.getAmountItemsSold() %></td>
+						<td><b><i>TOTAL:</i></b> <%=Math.round(account.getAmountItemsSold()*100.0)/100.0 %><span style="color:red">***</span></td>
 					</tr>
 					<tr>
-						<form method="post" action="../Customer_Welcome.jsp" name="cancel" >								
+						<form method="post" action="Selling_Management.jsp" name="cancel" >								
 							<td style="padding:15px" colspan="3"><input type="submit" value="Back" class="button" style="padding:0px;width:200px;height:auto;margin-right:auto;margin-left:110px"></td>
 						</form>
 					</tr>
@@ -134,6 +134,9 @@
 			</div>
 			<br/>
 			<br/>
+			<div style="width:400px;margin-left:auto;margin-right:auto;background-color:#eaeaea">
+				<span style="color:red">***</span>Note: this total is <b>AFTER</b> the 5% commission
+			</div>
 			<br/>
 			<br/>
 			<div >
