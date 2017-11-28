@@ -102,7 +102,7 @@
 		<br/>
 		<br/>
 		<div style="font-size:22px;background-color:#8AC0D1;border:solid 2px white;width:300px;height:40px;margin-left:auto;margin-right:auto;text-align: center;">
-			<p style="line-height:0px"><b>Bidding History</b></p>
+			<p style="line-height:0px"><b>Account History</b></p>
 		</div>
 		<br/>
 			<div style="padding:15px;border: solid 2px #000;width:475px;height:auto;margin-left:auto;margin-right:auto;text-align: center;background-color:white;box-shadow: 10px 10px 5px #888888">
