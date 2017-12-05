@@ -134,7 +134,7 @@
 						</tr> 
 						<tr>
 							<td>Old Password</td>
-							<td><input name="password" value=<%=account.getPassword()%> size="20"></td>
+							<td><input name="password" value=<%=account.getPassword()%> size="20" readonly></td>
 						</tr>
 						<tr>
 							<td>New Password</td>

@@ -1,8 +1,15 @@
 <%@ page language="java" import="java.sql.*"%>
+<%@ page language="java" import="java.util.Date.*"%>
 <%@include file="../Selling/Security.jsp"%>
-<html style="background-color:white">
+<jsp:useBean id="item" class= "gabes_ZUPS.GABeS_Item"/> 
+
+<%
+ResultSet rs = item.getItemsBidOn(account.getUserID()); 
+%>
+
+<html style="background-color:white"> 
 	<head>
-		<title>Bidding Management</title>
+		<title>GABeS - Check Status</title>
 	</head>
 	<style>
 		.button {
@@ -60,7 +67,10 @@
 		}
 		
 		td {
-    		padding: 15px;
+    		padding-top:10px;
+			padding-left:10px;
+			padding-right:10px;
+    		width:300px;
     		border: 5px solid white;
 		}
 		table{
@@ -71,7 +81,7 @@
 	<body>
 		<div style="background-color:#8AC0D1;width:100%;min-width:1000px;height:190px;border:solid 3px white">
 			<div style="background-color:White;width:70%;min-width:650px;height:110px;margin-left:auto;margin-right:auto;box-shadow: 10px 10px 5px #777">
-				<h1 style="text-align:center"><img src="../../Images/GABES.png" style="width:200px;height:50px;padding-top:25px"> Bidding Homepage</h1>
+				<h1 style="text-align:center"><img src="../../Images/GABES.png" style="width:200px;height:50px;padding-top:25px">Popular Items</h1>
 			</div>
 		</div>
 		<div style="background-color:#777;min-width:1000px">
@@ -86,49 +96,27 @@
   				<li style="line-height:30px"><a href="../../Logout_action.jsp">Logout</a></li>
 			</ul>
 		</div>
-		<div style="font-size:18px;border-left:solid 2px white;border-right:solid 2px white;background-color:#eaeaea;width:100%;height:inherit;margin-left:auto;margin-right:auto;text-align: center;">
-			<% String anyErrors = request.getParameter("Error");%>
+		<div style="background-color:#eaeaea;width:auto;min-width:1000px;height:auto;min-height:400px;border:solid 2px white">
+		<br/>
+		<br/>
+		<div style="font-size:22px;background-color:#8AC0D1;border:solid 2px white;width:400px;height:40px;margin-left:auto;margin-right:auto;text-align: center;">
+			<p style="line-height:0px"><b>Popular Items</b></p>
 		</div>
-		<div style="background-color:#eaeaea;width:100%;min-width:1000px;height:auto;min-height:400px;border:solid 2px white;border-top:none">
 		<br/>
-		<br/>
-		<div style="width:950px;margin-left:auto;margin-right:auto;box-shadow: 10px 10px 5px #888888">
+		<div style="padding:15px;border: solid 2px #000;width:900px;height:auto;margin-left:auto;
+					margin-right:auto;text-align: center;background-color:white;box-shadow: 10px 10px 5px #888888">
 			<table>
-				<tr>
-					<td>
-						<a href="Search.jsp" class="button" style="height:30px;width:250px;line-height:30px">Search</a>
-					</td>
-					<td> Enables the to search for specific items in the database. They are able to search by ItemId, Keyword, Category, Current bid range, auction time period, and inexact search on item name (using soundex).   
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<a href="PopularItems.jsp" class="button" style="height:30px;width:250px;line-height:30px">Popular Items</a>
-					</td>
-					<td>  Allows the customer to view the top 5 most popular items currently that are still on sale.
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<a href="Check_Status.jsp" class="button" style="height:30px;width:250px;line-height:30px">Check Status</a>
-					</td>
-					<td>  Allows the Customer to view all items that are currently on bid.
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<a href="BiddingHistory.jsp" class="button" style="height:30px;width:250px;line-height:30px">History</a>
-					</td>
-					<td>  Allows the Customer to view all items that they have bid on in the past.
-					</td>
-				</tr>
+			<tr>
+				
+			</tr>
 			</table>
-			</div>
-			<br/>
-			<br/>
-			<br/>
-			<br/>
 		</div>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
 		<div style="margin-top:-50px">
 			<hr style="height:2px;background-color:#777;color:#777;border:solid 1px white;margin-left:20px;margin-right:20px"/>
 			<p style="font-size:12px;margin-left:20px"> <b>Copyright ©2017 ZUPS. Powered by Upton, Schmidgall, Pekarek, and Zins </b></p>
