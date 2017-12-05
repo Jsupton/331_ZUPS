@@ -15,6 +15,7 @@ public class GABeS_Item {
 	/**
 	 * The following fields correspond to the fields in Table GABeS_Item in your
 	 * GABeS_ZUPS Oracle database
+	 * 
 	 */
 	  private int itemID;
 	  private String itemName;
