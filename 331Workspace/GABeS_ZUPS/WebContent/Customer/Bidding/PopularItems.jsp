@@ -4,7 +4,7 @@
 <jsp:useBean id="item" class= "gabes_ZUPS.GABeS_Item"/> 
 
 <%
-ResultSet rs = item.getItemsBidOn(account.getUserID()); 
+ResultSet rs = item.FiveMostPopular(); 
 %>
 
 <html style="background-color:white"> 

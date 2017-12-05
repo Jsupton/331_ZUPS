@@ -358,6 +358,23 @@ public class GABeS_Item {
 	}
 	
 	/**
+	 * This method gets the top 5 most popular items on auction.
+	 * @return ResultSet with the desired query
+	 */
+	public ResultSet FiveMostPopular() {
+		try {
+			String query = "Select * from(Select Count(MaxBid) as Bids, I.ItemID, I.ItemName, I.Description, GABeS_TIME_REMAINING(I.ItemID) as RemainingTime from GABeS_Item I, GABeS_Bids B where I.ItemID = B.ItemID and I.endTime>Current_TimeStamp Group by I.ItemID, I.ItemName, I.Description, GABeS_TIME_REMAINING(I.ItemID) Order by Bids DESC) Where rownum<=5";
+			PreparedStatement ps = openDBConnection().prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			return rs;
+		}
+		catch(SQLException sql) {
+			System.out.println(sql.getMessage());
+			return null;
+		}
+	}
+	
+	/**
 	 * This method gets all of the items that the specific user is selling
 	 * @param userID The specific userID of the current user
 	 * @return ResultSet with the desired query
