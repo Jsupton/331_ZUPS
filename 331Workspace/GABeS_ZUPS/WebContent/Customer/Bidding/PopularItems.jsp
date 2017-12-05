@@ -107,8 +107,21 @@ ResultSet rs = item.FiveMostPopular();
 					margin-right:auto;text-align: center;background-color:white;box-shadow: 10px 10px 5px #888888">
 			<table>
 			<tr>
-				
+				<th>Bids</th>
+				<th>Item ID</th>
+				<th>Item Name</th>
+				<th>Description</th>
+				<th>Time Remaining</th>
 			</tr>
+			<% while(rs.next()){ %>
+						<tr>
+							<td><%=rs.getDouble(1) %></td>
+							<td><%=rs.getInt(2) %></td>
+							<td><%=rs.getString(3) %></td>
+							<td><%=rs.getString(4) %></td>
+							<td><%=rs.getString(5) %></td>
+						</tr>
+					<%}%>
 			</table>
 		</div>
 		<br/>
