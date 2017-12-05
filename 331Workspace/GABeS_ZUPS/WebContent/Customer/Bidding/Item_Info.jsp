@@ -7,6 +7,11 @@
 	ResultSet rs = Item.getItemInfo();
 	ResultSet rs2 = Item.getSimilarItems(account.getUserID());
 %> 
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
 
 <html style="background-color:white"> 
 	<head>
@@ -161,10 +166,8 @@
 						</form>
 					<%}else{ %>
 						<td style="padding:15px;width:80px"><input name="edit" value="Bid" type="submit" class="button2" style="padding:0px;height:auto;margin-right:auto;margin-left:auto" disabled="disabled"></td>
-					<%} %>	
-						<form method="post" action="Check_Status.jsp" name="Login" >						
-							<td style="padding:15px"><input type="submit" value="Cancel" class="button" style="padding:0px;height:auto;margin-right:auto;margin-left:auto"></td>
-						</form>
+					<%} %>							
+						<td style="padding:15px"><input type="submit" value="Cancel" class="button" onclick="goBack()" style="padding:0px;height:auto;margin-right:auto;margin-left:auto"></td>
 					</tr>
 				</table>
 			</div>

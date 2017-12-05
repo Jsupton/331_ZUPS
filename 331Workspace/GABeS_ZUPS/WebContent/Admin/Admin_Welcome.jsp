@@ -106,12 +106,10 @@
 					</tr>
 					<tr>
 						<td>
-							<a href="ViewAllCustomerFeedback.jsp" class="button" style="line-height:50px;width:225px">VIEW REPORTS</a>
+							<a href="ViewAllCustomerFeedback.jsp" class="button" style="width:225px">VIEW CUSTOMER FEEDBACK</a>
 						</td>
-						<td > Allows the administrator to view all of the customer feedback, Ordered by customer.
-							<br/><b>Sales Summary Report:</b>
-						 	<p style="margin-top:0px;margin-bottom:0px;margin-left:40px">This allows the user to view all the feedback responses that buyers have given sellers and see which of their sellers
-						 	aren't doing so great</p>
+						<td > Allows the administrator to view all of the customer feedback, Ordered by customer. This allows the user to view all the feedback responses 
+						that buyers have given sellers and see which of their sellers aren't doing so great</p>
 						</td>
 					</tr>
 				</table>

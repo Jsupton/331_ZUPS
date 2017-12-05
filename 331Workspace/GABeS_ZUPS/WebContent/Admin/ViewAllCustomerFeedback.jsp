@@ -96,7 +96,7 @@ ResultSet rs = account.getRatingsSummary();
 				<p style="line-height:0px"><b>Customer Feedback Summary</b></p>
 			</div>
 			<br/>
-			<div style="padding:10px;border: solid 2px #000;width:820px;height:auto;margin-left:auto;margin-right:auto;text-align: center;background-color:white;box-shadow: 10px 10px 5px #888888">
+			<div style="padding:10px;border: solid 2px #000;width:700px;height:auto;margin-left:auto;margin-right:auto;text-align: center;background-color:white;box-shadow: 10px 10px 5px #888888">
 				<table>
 					<tr>
 						<th>Seller</th>
@@ -110,7 +110,7 @@ ResultSet rs = account.getRatingsSummary();
 							<td><%=rs.getString(1) %></td>
 							<td><%=rs.getString(2) %></td>
 							<td><%=rs.getInt(3) %></td>
-							<td><%=rs.getDouble(4) %></td>
+							<td><%=String.format("%.2f",rs.getDouble(4))%></td>
 							<td><%=rs.getString(5) %></td>
 							
 						</tr>
