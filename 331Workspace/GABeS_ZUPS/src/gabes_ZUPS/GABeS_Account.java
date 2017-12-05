@@ -8,7 +8,7 @@ import oracle.jdbc.*;
 
 /**
  * This class encapsulates the required attributes in the GABeS_Account table.
- * This Java Bean class is used in the GABeS Web system.
+ * This Java Bean class is used in the GABeS Web systems.
  * 
  * Used for the Online Web Bidding System - GABeS
  * @author jsupton
