@@ -359,6 +359,7 @@ public class GABeS_Item {
 	
 	/**
 	 * This method gets the top 5 most popular items on auction.
+	 * 
 	 * @return ResultSet with the desired query.
 	 */
 	public ResultSet FiveMostPopular() {
