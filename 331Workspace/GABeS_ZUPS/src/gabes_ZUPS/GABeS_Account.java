@@ -315,7 +315,7 @@ public class GABeS_Account {
 	 */
 	public ResultSet getRatingsSummary() throws IllegalStateException {
 		try {
-			String query = "Select Seller.Username as Seller, Buyer.Username as Buyer, F.ItemID, Sum(F.rating+F.ItemQuality+F.DeliveryQuality)/3 as Rating, F.Comments "
+			String query = "Select Seller.Username as Seller, Buyer.Username as Buyer, F.ItemID, Round(Sum(F.rating+F.ItemQuality+F.DeliveryQuality)/3,2) as Rating, F.Comments "
 					+ "From GABeS_Account Seller, GABeS_Account Buyer, GABeS_Feedback F, GABeS_Item I Where I.ItemID = F.ItemID and I.SellerID = Seller.UserID and Buyer.UserID = F.BuyerID Group by Seller.Username, Buyer.Username, F.ItemID, F.Comments Order by Seller,Rating";
 			PreparedStatement ps = openDBConnection().prepareStatement(query);
 			ResultSet r = ps.executeQuery();
