@@ -2,7 +2,7 @@
 <%@include file="Security.jsp"%>
 
 <%
-
+ResultSet rs = account.getRatingsSummary();
 %>
 
 <html style="background-color:white"> 
@@ -98,7 +98,23 @@
 			<br/>
 			<div style="padding:10px;border: solid 2px #000;width:820px;height:auto;margin-left:auto;margin-right:auto;text-align: center;background-color:white;box-shadow: 10px 10px 5px #888888">
 				<table>
-					
+					<tr>
+						<th>Seller</th>
+						<th>Buyer</th>
+						<th>Item ID</th>
+						<th>Rating</th>
+						<th>Comments</th>
+					</tr>
+					<% while(rs.next()){ %>
+						<tr>
+							<td><%=rs.getString(1) %></td>
+							<td><%=rs.getString(2) %></td>
+							<td><%=rs.getInt(3) %></td>
+							<td><%=rs.getDouble(4) %></td>
+							<td><%=rs.getString(5) %></td>
+							
+						</tr>
+					<%}%>
 				</table>
 			</div>
 			<br/>

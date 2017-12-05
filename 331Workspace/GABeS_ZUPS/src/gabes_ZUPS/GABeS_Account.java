@@ -307,6 +307,26 @@ public class GABeS_Account {
 			return null;
 		}
 	}
+	/**
+	 * This method is responsible for generating the ratings Summary report.
+	 * It selects the seller user name, the buyer user name, the item ID, the rating, and the comments
+	 * for each seller
+	 * @return ResultSet containing the specified query
+	 */
+	public ResultSet getRatingsSummary() throws IllegalStateException {
+		try {
+			String query = "Select Seller.Username as Seller, Buyer.Username as Buyer, F.ItemID, Sum(F.rating+F.ItemQuality+F.DeliveryQuality)/3 as Rating, F.Comments "
+					+ "From GABeS_Account Seller, GABeS_Account Buyer, GABeS_Feedback F, GABeS_Item I Where I.ItemID = F.ItemID and I.SellerID = Seller.UserID and Buyer.UserID = F.BuyerID Group by Seller.Username, Buyer.Username, F.ItemID, F.Comments Order by Seller,Rating";
+			PreparedStatement ps = openDBConnection().prepareStatement(query);
+			ResultSet r = ps.executeQuery();
+			return r;
+			
+		}
+		catch(SQLException sql) {
+			System.out.println(sql.getMessage());
+			return null;
+		}
+	}
 	
 	/**
 	 * This method is used to generate the Commission Report. It gets the UserID
