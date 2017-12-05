@@ -35,7 +35,7 @@
     		margin: auto;
     		padding: 0;
     		overflow: hidden;
-    		width:550px;
+    		width:850px;
 		}
 
 		li {
@@ -80,6 +80,7 @@
   				<li><a class="active" href="Admin_Welcome.jsp">Home</a></li>
   				<li><a href="User_Management.jsp">User Management</a></li>
   				<li><a href="View_Reports.jsp">View Reports</a></li>
+  				<li><a href="ViewAllCustomerFeedback.jsp">View Customer Feedback</a></li>
   				<li><a href="../Logout_action.jsp">Logout</a></li>
 			</ul>
 		</div>

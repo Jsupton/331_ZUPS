@@ -33,7 +33,7 @@
     		margin: auto;
     		padding: 0;
     		overflow: hidden;
-    		width:550px;
+    		width:850px;
 		}
 
 		li {
@@ -78,6 +78,7 @@
   				<li><a class="active" href="Admin_Welcome.jsp">Home</a></li>
   				<li><a href="User_Management.jsp">User Management</a></li>
   				<li><a href="View_Reports.jsp">View Reports</a></li>
+  				<li><a href="ViewAllCustomerFeedback.jsp">View Customer Feedback</a></li>
   				<li><a href="../Logout_action.jsp">Logout</a></li>
 			</ul>
 		</div>
@@ -101,6 +102,16 @@
 							<br/><b>Sales Summary Report:</b>
 						 	<p style="margin-top:0px;margin-bottom:0px;margin-left:40px">lists sales summary information for each item, grouped by item category.</p><b>Overall Commission Report:</b>
 						 	<p style="margin-top:0px;margin-bottom:0px;margin-left:40px">lists all sellers who have sold items along with their total commission fees paid.</p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="ViewAllCustomerFeedback.jsp" class="button" style="line-height:50px;width:225px">VIEW REPORTS</a>
+						</td>
+						<td > Allows the administrator to view all of the customer feedback, Ordered by customer.
+							<br/><b>Sales Summary Report:</b>
+						 	<p style="margin-top:0px;margin-bottom:0px;margin-left:40px">This allows the user to view all the feedback responses that buyers have given sellers and see which of their sellers
+						 	aren't doing so great</p>
 						</td>
 					</tr>
 				</table>
