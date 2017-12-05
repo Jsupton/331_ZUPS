@@ -4,8 +4,8 @@
 <%
 ResultSet rs1 = account.getSalesSummary(); 
 ResultSet rs2 = account.getCommissionReport();
-float subtotal = 0;
-float total = 0;
+double subtotal = 0;
+double total = 0;
 String category = "";
 %>
 
@@ -124,25 +124,25 @@ String category = "";
 								subtotal = 0;
 							} 
 							category = rs1.getString(1);
-							subtotal = subtotal + rs1.getFloat(5);
+							subtotal = subtotal + rs1.getDouble(5);
 							%>
 							<tr>
 								<td><%=category%></td>
 								<td><%=rs1.getInt(2) %></td>
 								<td><%=rs1.getString(3) %></td>
-								<td><%=rs1.getFloat(4) %></td>
-								<td><%=rs1.getFloat(5) %></td>
+								<td><%=rs1.getDouble(4) %></td>
+								<td><%=rs1.getDouble(5) %></td>
 							</tr>
 						<%} 
 						else{
-							subtotal = subtotal + rs1.getFloat(5);
+							subtotal = subtotal + rs1.getDouble(5);
 							%>
 							<tr>
 								<td></td>
 								<td><%=rs1.getInt(2) %></td>
 								<td><%=rs1.getString(3) %></td>
-								<td><%=rs1.getFloat(4) %></td>
-								<td><%=rs1.getFloat(5) %></td>
+								<td><%=rs1.getDouble(4) %></td>
+								<td><%=rs1.getDouble(5) %></td>
 							</tr>
 						<%}
 					} 
@@ -152,7 +152,7 @@ String category = "";
 						<td><b>SUBTOTAL</b></td>
 						<td>--------</td>
 						<td>--------</td>
-						<td><b><%= String.format("%.2f",subtotal)%></b></td>
+						<td><b><%=String.format("%.2f",subtotal)%></b></td>
 					</tr>
 					<tr style="height:20px;"></tr>
 					<tr>

@@ -104,7 +104,7 @@ item.setItemInfo();
 			<p style="line-height:0px"><b>Rate Seller</b></p>
 		</div>
 		<br/>
-		<div style="padding:15px;border: solid 2px #000;width:600px;height:auto;margin-left:auto;
+		<div style="padding:15px;padding-bottom:0px;border: solid 2px #000;width:600px;height:auto;margin-left:auto;
 					margin-right:auto;text-align: center;background-color:white;box-shadow: 10px 10px 5px #888888">
 			<form method="post" action="Rate_Seller_action.jsp" name="rateSeller" >
 				<table>
@@ -150,7 +150,7 @@ item.setItemInfo();
 					</tr>
 					<tr>
 						<td>Comments</td>
-						<td><textarea name="comments" required></textarea>
+						<td><textarea name="comments" style="width:335px;max-width:335px;min-width:335px;height:75px" required></textarea>
 					</tr>
 					<tr>
 						<td style="padding:15px"><input name="rate" value="Rate" type="submit" class="button" style="padding:0px;height:auto;margin-right:auto;margin-left:auto"></td>
