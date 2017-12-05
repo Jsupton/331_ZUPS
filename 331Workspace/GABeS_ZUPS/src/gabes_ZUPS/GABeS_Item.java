@@ -471,8 +471,8 @@ public class GABeS_Item {
 	 */
 	public ResultSet getSimilarItems(int userID) {
 		try {
-			String query = "Select ItemName, ItemID, GABeS_TIME_REMAINING(ItemID) from GABeS_Item "
-					+ "where EndTime>Current_TimeStamp and Categories=? and sellerID<>? and ItemID<>? and rownum<=5";
+			String query = "Select * From(Select ItemName, ItemID, GABeS_TIME_REMAINING(ItemID) from GABeS_Item "
+					+ "where EndTime>Current_TimeStamp and Categories=? and sellerID<>? and ItemID<>?) Where rownum<=5";
 			PreparedStatement ps = openDBConnection().prepareStatement(query);
 			ps.clearParameters();
 			ps.setString(1,this.getCategories());
