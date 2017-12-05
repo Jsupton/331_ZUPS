@@ -107,19 +107,22 @@ ResultSet rs = item.FiveMostPopular();
 					margin-right:auto;text-align: center;background-color:white;box-shadow: 10px 10px 5px #888888">
 			<table>
 			<tr>
-				<th>Bids</th>
 				<th>Item ID</th>
 				<th>Item Name</th>
 				<th>Description</th>
 				<th>Time Remaining</th>
+				<th>Item Info</th>
 			</tr>
 			<% while(rs.next()){ %>
 						<tr>
-							<td><%=rs.getDouble(1) %></td>
 							<td><%=rs.getInt(2) %></td>
 							<td><%=rs.getString(3) %></td>
 							<td><%=rs.getString(4) %></td>
 							<td><%=rs.getString(5) %></td>
+							<form method="post" action="Item_Info.jsp" name="ItemInfo">
+								<td><input name="Item-Info" value="Item-Info" type="submit" style="width:auto;height:auto;margin-right:auto;margin-left:auto">
+									<input type="hidden" name="itemID" value=<%=rs.getInt(2)%>></td>
+							</form>
 						</tr>
 					<%}%>
 			</table>
