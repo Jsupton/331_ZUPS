@@ -506,5 +506,32 @@ public class GABeS_Item {
 			System.out.println(sql.getMessage());
 			return null;
 		}
-	}	  
+	}
+	
+	public String itemsNotWinning(int userID, String username) {
+		try {
+			String resultString = "";
+			String query = "Select Distinct I.ItemName, I.ItemID From GABeS_Item I, GABeS_Bids B "
+					+ "Where I.ItemID = B.ItemID and B.UserID = ? and GABeS_CURRENT_WINNER(I.ItemID) <> ? and I.endTime>Current_Timestamp";
+			PreparedStatement ps = openDBConnection().prepareStatement(query);
+			ps.clearParameters();
+			ps.setInt(1, userID);
+			ps.setString(2,  username);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				resultString += rs.getString(1)+ "("+rs.getInt(2)+") ";
+			}
+			return resultString;
+		}
+		catch(SQLException sql) {
+			System.out.println(sql.getMessage());
+			return null;
+		}
+	}
+	
+	public static void main(String args[]) {
+		GABeS_Item i = new GABeS_Item();
+		String s = i.itemsNotWinning(4,"MPEKAREK");
+		System.out.println(s);
+	}
 }
