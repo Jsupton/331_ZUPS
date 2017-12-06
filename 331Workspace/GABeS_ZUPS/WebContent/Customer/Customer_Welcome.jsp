@@ -1,11 +1,13 @@
 <%@ page language="java" import="java.sql.*"%>
 <%@include file="../Admin/Security.jsp"%>
 <jsp:useBean id="customer" class= "gabes_ZUPS.GABeS_Customer"/> 
+<jsp:useBean id="item" class= "gabes_ZUPS.GABeS_Item"/> 
 
 <%
 	customer.setUserID(account.getUserID());
 	customer.setCustomerInfo(); 
 %>
+
 <html style="background-color:white">
 	<head>
 		<title>CUSTOMER WELCOME</title>
@@ -40,7 +42,6 @@
     		overflow: hidden;
     		width:550px;
 		}
-
 		li {
     		float: left;
     		display:inline;
@@ -48,7 +49,6 @@
     		width:115px;
     		height:60px;
 		}
-
 		li a {
     		display: block;
     		color: white;
@@ -58,7 +58,6 @@
     		text-decoration: none;
     		font-size: 12px;
 		}
-
 		li a:hover {
     		background-color: #8AC0D1;
     		color: white;
@@ -74,10 +73,10 @@
 			background-color:#f5f5f5;
 		}
 	</style>
-	<body>
+	<body >
 		<div style="background-color:#8AC0D1;width:100%;min-width:1000px;height:190px;border:solid 3px white">
 			<div style="background-color:White;width:70%;min-width:650px;height:110px;margin-left:auto;margin-right:auto;box-shadow: 10px 10px 5px #777">
-				<h1 style="text-align:center"><img src="../Images/GABES.png" style="width:200px;height:50px;"> CUSTOMER Homepage</h1>
+				<h1 style="text-align:center"><img src="../Images/GABES.png" onload="myFunction()" style="width:200px;height:50px;"> CUSTOMER Homepage</h1>
 				<p style="text-align:center;font-size:20px"> Welcome <%=account.getUserName()%>
 			</div>
 		</div>
@@ -104,7 +103,71 @@
 		</div>
 		<div style="background-color:#eaeaea;width:100%;min-width:1000px;height:auto;border:solid 2px white;border-top:none">
 		<br/>
-			<div style="width:950px;margin-left:auto;margin-right:auto;box-shadow: 10px 10px 5px #888888">
+		<style>
+		/* Popup container */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+		/* The actual popup */
+.popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+</style>
+</head>
+<body style="text-align:center">
+		
+		<script>
+			// When the user clicks on div, open the popup
+			function myFunction() {
+				//var popup = document.getElementById("myPopup");
+				//popup.classList.toggle("hide");
+				 alert("You are no longer the winner of " + <%= item.itemsNotWinning(account.getUserID(), account.getUserName())%>);
+			}
+		</script>
+		<div style="width:950px;margin-left:auto;margin-right:auto;box-shadow: 10px 10px 5px #888888">
 			<table>
 				<tr>
 					<td>

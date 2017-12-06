@@ -30,6 +30,8 @@ public class GABeS_Account {
 	 */
 	private boolean isLoggedIn = false;
 	
+	private boolean alerted = false;
+	
 	/**
 	 * The Deault constructor... No parameters needed
 	 */
@@ -106,6 +108,22 @@ public class GABeS_Account {
 	  */
 	 public Boolean isLoggedIn() {
 	    return this.isLoggedIn;
+	  }
+	 
+	 /**
+	  * A getter for class field loggedIn
+	  * @return whether the Customer is logged in or not
+	  */
+	 public Boolean hasBeenAlerted() {
+	    return this.alerted;
+	  }
+	 
+	 /**
+	  * A getter for class field loggedIn
+	  * @param whether the Customer has been alerted in or not
+	  */
+	 public void setAlerted() {
+	    this.alerted = true;
 	  }
 	
 	/**
