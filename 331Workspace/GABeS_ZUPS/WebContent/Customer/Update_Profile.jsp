@@ -3,6 +3,7 @@
 <%@include file="/Styles/CustomerStyle.jsp"%>
 <jsp:useBean id="customer" class= "gabes_ZUPS.GABeS_Customer"/>
 <%
+	account.getAccountInfo();
 	customer.setUserID(account.getUserID());
 	customer.setCustomerInfo(); 
 %>
@@ -52,44 +53,44 @@
 					<table>
 						<tr>
 							<td>Username</td>
-							<td><input name="userName" value=<%=account.getUserName()%> size="20">
-							 <input name="userID" value=<%=account.getUserID()%> size="20" type="hidden"></td>
+							<td><input name="userName" value=<%=account.getUserName()%> >
+							 <input name="userID" value="<%=account.getUserID()%>" type="hidden"></td>
 						</tr>
 						<tr>
 							<td>First Name</td>
-							<td><input name="fName" value=<%=customer.getfName()%>></td>
+							<td><input name="fName" value="<%=customer.getfName()%>"></td>
 						</tr>
 						<tr>
 							<td>Last Name</td>
-							<td><input name="lName" value=<%=customer.getlName()%>></td>
+							<td><input name="lName" value="<%=customer.getlName()%>"></td>
 						</tr>
 						<tr>
 							<td>Email</td>
-							<td><input name="email" value=<%=customer.getEmail()%>></td>
+							<td><input name="email" value="<%=customer.getEmail()%>"></td>
 						</tr>
 						<tr>
 							<td>Phone</td>
-							<td><input name="phone" value=<%=customer.getPhone()%>></td>
+							<td><input name="phone" value="<%=customer.getPhone()%>"></td>
 						</tr>
 						<tr>
 							<td>Seller Rating</td>
-							<td><input name="SellerRating" value=<%=String.format("%.4f",customer.getSellerRating())%> size="20" readonly></td>
+							<td><input name="SellerRating" value=<%=String.format("%.4f",customer.getSellerRating())%>  readonly></td>
 						</tr>
 						<tr>
 							<td>Number Of Seller Ratings</td>
-							<td><input name="NoSellerRating" value=<%=customer.getNumSellerRating() %> size="20" readonly></td>
+							<td><input name="NoSellerRating" value=<%=customer.getNumSellerRating() %> readonly></td>
 						</tr> 
 						<tr>
 							<td>Old Password</td>
-							<td><input name="password" value=<%=account.getPassword()%> size="20" readonly></td>
+							<td><input name="password" value=<%=account.getPassword()%> readonly></td>
 						</tr>
 						<tr>
 							<td>New Password</td>
-							<td><input name="newPassword" value="" size="20"></td>
+							<td><input name="newPassword" value="" ></td>
 						</tr>
 						<tr>
 							<td>Retype Password</td>
-							<td><input name="retypePassword" value="" size="20"></td>
+							<td><input name="retypePassword" value=""></td>
 						</tr>
 						<tr>
 							<td style="padding:15px"><input name="edit" value="Save Changes" type="submit" class="button" style="padding:0px;height:auto;margin-right:auto;margin-left:auto"></td>

@@ -55,7 +55,7 @@
 						</tr>
 						<tr>
 							<td style="width:200px">Item Name</td>
-							<td style="width:400px"><input name="itemName" value=<%=Item.getItemName()%> readonly></td>
+							<td style="width:400px"><input name="itemName" value="<%=Item.getItemName()%>" readonly></td>
 						</tr>
 						<tr>
 							<td style="width:200px">Current Bid</td>

@@ -22,66 +22,27 @@
 			border-collapse: collapse;
 			background-color:#f5f5f5;
 		}
-				/* Popup container */
-		.popup {
-		    position: relative;
-		    display: inline-block;
+		.alert {
+		    padding: 20px;
+		    background-color: #f44336;
+		    color: white;
+		}
+		
+		.closebtn {
+		    margin-left: 15px;
+		    color: white;
+		    font-weight: bold;
+		    float: right;
+		    font-size: 22px;
+		    line-height: 20px;
 		    cursor: pointer;
-		}
-				/* The actual popup */
-		.popup .popuptext {
-		    visibility: hidden;
-		    width: 160px;
-		    background-color: #555;
-		    color: #fff;
-		    text-align: center;
-		    border-radius: 6px;
-		    padding: 8px 0;
-		    position: absolute;
-		    z-index: 1;
-		    bottom: 125%;
-		    left: 50%;
-		    margin-left: -80px;
+		    transition: 0.3s;
 		}
 		
-		/* Popup arrow */
-		.popup .popuptext::after {
-		    content: "";
-		    position: absolute;
-		    top: 100%;
-		    left: 50%;
-		    margin-left: -5px;
-		    border-width: 5px;
-		    border-style: solid;
-		    border-color: #555 transparent transparent transparent;
-		}
-		
-		/* Toggle this class - hide and show the popup */
-		.popup .show {
-		    visibility: visible;
-		    -webkit-animation: fadeIn 1s;
-		    animation: fadeIn 1s;
-		}
-		
-		/* Add animation (fade in the popup) */
-		@-webkit-keyframes fadeIn {
-		    from {opacity: 0;} 
-		    to {opacity: 1;}
-		}
-		
-		@keyframes fadeIn {
-		    from {opacity: 0;}
-		    to {opacity:1 ;}
+		.closebtn:hover {
+		    color: black;
 		}
 	</style>
-	<script>
-		// When the user clicks on div, open the popup
-		function myFunction() {
-			//var popup = document.getElementById("myPopup");
-			//popup.classList.toggle("hide");
-			 alert("You are no longer the winner of " + <%= item.itemsNotWinning(account.getUserID(), account.getUserName())%>);
-		}
-	</script>
 	<body >
 		<div style="background-color:#8AC0D1;width:100%;min-width:1000px;height:190px;border:solid 3px white">
 			<div style="background-color:White;width:70%;min-width:650px;height:110px;margin-left:auto;margin-right:auto;box-shadow: 10px 10px 5px #777">
@@ -89,6 +50,14 @@
 				<p style="text-align:center;font-size:20px"> Welcome <%=account.getUserName()%>
 			</div>
 		</div>
+		<%String alert = item.itemsNotWinning(account.getUserID(), account.getUserName());
+		if(!alert.equals("") && !account.hasBeenAlerted()){%>
+			<div class="alert">
+	  			<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+	  			<strong>Warning --- </strong> You are no longer the winner of <%=alert%>
+			</div>
+		<%account.setAlerted();
+		}%>
 		<div style="background-color:#777;min-width:1000px">
 			<ul style="width:950px">
   				<li style="line-height:30px"><a class="active" href="Customer_Welcome.jsp">Home</a></li>

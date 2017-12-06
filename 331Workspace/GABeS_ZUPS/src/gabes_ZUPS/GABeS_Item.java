@@ -519,7 +519,7 @@ public class GABeS_Item {
 			ps.setString(2,  username);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
-				resultString += rs.getString(1)+ "("+rs.getInt(2)+") ";
+				resultString += "\""+rs.getString(1)+"\""+ " ("+rs.getInt(2)+") ";
 			}
 			return resultString;
 		}

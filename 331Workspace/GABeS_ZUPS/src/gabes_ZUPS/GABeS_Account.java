@@ -30,6 +30,9 @@ public class GABeS_Account {
 	 */
 	private boolean isLoggedIn = false;
 	
+	/**
+	 * This instance variable denotes if a user has been alerted or not.
+	 */
 	private boolean alerted = false;
 	
 	/**

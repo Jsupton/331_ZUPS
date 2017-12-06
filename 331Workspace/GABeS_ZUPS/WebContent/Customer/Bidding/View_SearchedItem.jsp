@@ -14,6 +14,20 @@
 		<title>GABeS Customer - Update Profile</title>
 	</head>
 	<style>
+		.button2 {
+    		background-color: #eeeeee;
+    		border: 2px solid #dddddd;
+    		color: #aaaaaa;
+    		font-weight:bold;
+    		padding: 15px 32px;
+    		text-align: center;
+    		text-decoration: none;
+    		display: inline-block;
+    		font-size: 18px;
+    		cursor: pointer;
+    		width:200px;
+    		height:75%;
+    		}
 		td {
     		padding: 5;
     		width:300px;
