@@ -163,7 +163,7 @@ public class GABeS_Customer {
 	 * seller rating that the current user has. This method calls the 
 	 * GABeS_SELLER_RATING() Function
 	 * 
-	 * @return an integer representing the seller ratings for this user.
+	 * @return a double representing the seller ratings for this user.
    	 */
 	public double getSellerRating() {
 		try {
@@ -189,7 +189,7 @@ public class GABeS_Customer {
 	 * of seller ratings that the current user has. This method calls the 
 	 * GABeS_NUM_SELLER_RATING() Function
 	 * 
-	 * @return an integer representing the number seller ratings for this user.
+	 * @return an double representing the number seller ratings for this user.
    	 */
 	public double getNumSellerRating() {
 		try {
@@ -238,7 +238,7 @@ public class GABeS_Customer {
 	/**
 	 * This method allows us to add a new customer to the database.
 	 * It performs an Insert query with the current instance variables as values.
-	 * @returns int the number of rows updated
+	 * @returns int the number of rows added
 	 */
 	public int addCustomer() throws IllegalStateException {
 		try {

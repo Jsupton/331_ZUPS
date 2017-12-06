@@ -173,7 +173,7 @@ public class GABeS_Feedback {
 	/**
 	 * This method is responsible for inserting a new feedback into the database.
 	 * It takes all of the instance variables and sets them to values in the insert statement
-	 * @return ResultSet with the desired query
+	 * @return int representing the number of rows inserted/updated
 	 */
 	public int insertNewFeedback() {
 		try {
@@ -195,8 +195,10 @@ public class GABeS_Feedback {
 	}
 	
 	/**
-	 * 
-	 * @return ResultSet with the desired query
+	 * This method is responsible for checking to see if a user can place feedback on an item they bought.
+	 * This method checks to see if there is a feedback in GABeS_Feedback with the given
+	 * buyerID and ItemID. If there is this method returns false (The feedback is not open).
+	 * @return boolean if true, the user can given feedback on the desired item.
 	 */
 	public boolean openFeedback(int BuyerID,int ItemID) {
 		try {

@@ -1,69 +1,13 @@
 <%@ page language="java" import="java.sql.*"%>
-<%@include file="../Selling/Security.jsp"%>
+<%@include file="/Security.jsp"%>
+<%@include file="/Styles/CustomerStyle.jsp"%>
 <jsp:useBean id="Bid" class= "gabes_ZUPS.GABeS_Bids"/>
-<%
-	
-%> 
 
 <html style="background-color:white"> 
 	<head>
 		<title>GABeS Customer - Bidding History</title>
 	</head>
 	<style>
-		.button {
-    		background-color: #8AC0D1;
-    		border: 2px solid #777;
-    		color: White;
-    		font-weight:bold;
-    		padding: 15px 32px;
-    		text-align: center;
-    		text-decoration: none;
-    		display: inline-block;
-    		font-size: 18px;
-    		cursor: pointer;
-    		width:200px;
-    		height:75%;
-    		}
-    		
-    	.button:hover {
-    		box-shadow: 10px 10px 5px #888888;
-    		background-color: #777;
-    		border: 3px solid #8AC0D1;
-    		color: white;
-    	}
-    	
-		ul {
-   			list-style-type: none;
-    		margin: auto;
-    		padding: 0;
-    		overflow: hidden;
-    		width:550px;
-		}
-
-		li {
-    		float: left;
-    		display:inline;
-    		border: 1px solid #ddd;
-    		width:115px;
-    		height:60px;
-		}
-
-		li a {
-    		display: block;
-    		color: white;
-    		font-weight:bold;
-    		text-align: center;
-    		padding: 14px 16px;
-    		text-decoration: none;
-    		font-size: 12px;
-		}
-
-		li a:hover {
-    		background-color: #8AC0D1;
-    		color: white;
-    		font-weight:bold;
-		}
-		
 		td {
     		padding: 5;
     		width:300px;
@@ -108,12 +52,11 @@
 			<div style="padding:15px;border: solid 2px #000;width:475px;height:auto;margin-left:auto;margin-right:auto;text-align: center;background-color:white;box-shadow: 10px 10px 5px #888888">
 				<table>
 					<tr>
-						<td><b>Username</b></td>
-						<td colspan="2"><input name="userName" value=<%=account.getUserName()%> size="20" readonly>
-						 <input name="userID" value=<%=account.getUserID()%> size="20" type="hidden"></td>
+						<td colspan="3" style="text-align:center"><b>BIDDING MANAGEMENT</b></td>
 					</tr>
 					<tr>
-						<td colspan="3" style="text-align:center"><b>BIDDING MANAGEMENT</b></td>
+						<td><b>Username</b></td>
+						<td colspan="2"><input name="userName" value=<%=account.getUserName()%> size="20" readonly></td>
 					</tr>
 					<tr>
 						<td><b>Current Winning Bids</b></td>

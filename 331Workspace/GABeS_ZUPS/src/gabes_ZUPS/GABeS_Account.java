@@ -168,6 +168,10 @@ public class GABeS_Account {
 		this.isLoggedIn = false;
 	}
 	
+	/**
+	 * This method calls the GABeS_UPDATE_STATUS method which sorts through all of the items
+	 * in the database and makes sure that the status of each item is set properly
+	 */
 	public void updateStatus() {
 		try {
 			CallableStatement cstmt = openDBConnection().prepareCall( "{call GABeS_UPDATE_STATUS}");
@@ -203,6 +207,8 @@ public class GABeS_Account {
 	 * This method updates the current account information with the given instance
 	 * variable values. The JSP page loads user input value into the instance 
 	 * variables which we used to update the GABeS_ACCOUNT table
+	 * @return int showing how many rows were updated
+	 * @throws IllegalStateException
 	 */
 	public int UpdateAccountInfo() throws IllegalStateException {
 		try {
@@ -226,6 +232,7 @@ public class GABeS_Account {
 	 * This method is used for the User Management report. This method returns a result
 	 * set that contains all Customers and their basic information.
 	 * @return ResultSet containing all customers
+	 * @throws illegalStateException
 	 */
 	public ResultSet getCustomerList() throws IllegalStateException {
 		try {
@@ -247,6 +254,7 @@ public class GABeS_Account {
 	 * database, and adds one to that. This way we do not increment the counter every
 	 * time we try to get the next value.
 	 * @return int the next UserID in the DB
+	 * @throws illegalStateException
 	 */
 	public int getNextUserID() throws IllegalStateException {
 		try {
@@ -270,6 +278,7 @@ public class GABeS_Account {
 	 * This method is responsible for adding a new customer to the Database.
 	 * It uses the current instance variables to add this new user to the DB.
 	 * @return int the number of rows inserted
+	 * @throws illegalStateException
 	 */
 	public int addAccount() throws IllegalStateException {
 		try {
@@ -292,6 +301,7 @@ public class GABeS_Account {
 	 * It selects the Category, ItemID, ItemName, Final selling price and commission
 	 * for each item sold.
 	 * @return ResultSet containing the specified query
+	 * @throws illegalStateException
 	 */
 	public ResultSet getSalesSummary() throws IllegalStateException {
 		try {
@@ -312,10 +322,11 @@ public class GABeS_Account {
 	 * It selects the seller user name, the buyer user name, the item ID, the rating, and the comments
 	 * for each seller
 	 * @return ResultSet containing the specified query
+	 * @throws illegalStateException
 	 */
 	public ResultSet getRatingsSummary() throws IllegalStateException {
 		try {
-			String query = "Select Seller.Username as Seller, Buyer.Username as Buyer, F.ItemID, Round(Sum(F.rating+F.ItemQuality+F.DeliveryQuality)/3,2) as Rating, F.Comments "
+			String query = "Select Seller.Username as Seller, Buyer.Username as Buyer, F.ItemID, Round((Sum(F.rating+F.ItemQuality+F.DeliveryQuality)*2)/3,2) as Rating, F.Comments "
 					+ "From GABeS_Account Seller, GABeS_Account Buyer, GABeS_Feedback F, GABeS_Item I Where I.ItemID = F.ItemID and I.SellerID = Seller.UserID and Buyer.UserID = F.BuyerID Group by Seller.Username, Buyer.Username, F.ItemID, F.Comments Order by Seller,Rating";
 			PreparedStatement ps = openDBConnection().prepareStatement(query);
 			ResultSet r = ps.executeQuery();
@@ -333,6 +344,7 @@ public class GABeS_Account {
 	 * Username, First name, Last name, Email, rating, and total commissions for 
 	 * each customer in the database.
 	 * @return ResultSet containing the specified query
+	 * @throws illegalStateException
 	 */
 	public ResultSet getCommissionReport() throws IllegalStateException {
 		try {

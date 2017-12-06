@@ -35,7 +35,7 @@
 				<p style="text-align:center;font-size:20px"><b><i>G</i></b>eek <b><i>A</i></b>utomated <b><i>B</i></b>idding <b><i>e-S</i></b>ystem</p>
 			</div>
 			<div style="display: block;text-align: center;">
-				<p style="text-align:center;font-size:15px;width:500px;margin-left:auto;margin-right:auto;display: inline-block"> This site is designed as an automated bidding system. Customers are able to buy and sell items through this system</p>
+				<p style="text-align:center;font-size:15px;width:500px;margin-left:auto;margin-right:auto;display: inline-block"> This site is designed as an automated bidding system. Allows Customers to buy and sell desired items.</p>
 			</div>
 		</div>
 		<hr style="border:solid 1px white;color:white"/>

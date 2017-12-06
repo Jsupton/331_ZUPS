@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.sql.*"%>
 <%@ page language="java" import="java.util.Date.*"%>
-<%@include file="../Admin/Security.jsp"%>
+<%@include file="/Security.jsp"%>
+<%@include file="/Styles/CustomerStyle.jsp"%>
 <jsp:useBean id="item" class= "gabes_ZUPS.GABeS_Item"/> 
 <jsp:useBean id="Feedback" class= "gabes_ZUPS.GABeS_Feedback"/> 
 <%
@@ -12,60 +13,6 @@ ResultSet rs = item.getItemsBought(account.getUserID());
 		<title>GABeS - Leave Feedback</title>
 	</head>
 	<style>
-		.button {
-    		background-color: #8AC0D1;
-    		border: 2px solid #777;
-    		color: White;
-    		font-weight:bold;
-    		padding: 15px 32px;
-    		text-align: center;
-    		text-decoration: none;
-    		display: inline-block;
-    		font-size: 18px;
-    		cursor: pointer;
-    		width:200px;
-    		height:75%;
-    		}
-    		
-    	.button:hover {
-    		box-shadow: 10px 10px 5px #888888;
-    		background-color: #777;
-    		border: 3px solid #8AC0D1;
-    		color: white;
-    	}
-    	
-		ul {
-   			list-style-type: none;
-    		margin: auto;
-    		padding: 0;
-    		overflow: hidden;
-    		width:550px;
-		}
-
-		li {
-    		float: left;
-    		display:inline;
-    		border: 1px solid #ddd;
-    		width:115px;
-    		height:60px;
-		}
-
-		li a {
-    		display: block;
-    		color: white;
-    		font-weight:bold;
-    		text-align: center;
-    		padding: 14px 16px;
-    		text-decoration: none;
-    		font-size: 12px;
-		}
-
-		li a:hover {
-    		background-color: #8AC0D1;
-    		color: white;
-    		font-weight:bold;
-		}
-		
 		td {
     		padding-top:10px;
 			padding-left:10px;
@@ -77,7 +24,11 @@ ResultSet rs = item.getItemsBought(account.getUserID());
 			border-collapse: collapse;
 			background-color:#f5f5f5;
 		}
-		
+		th{
+			font-size:17px;
+			background-color:#777;
+			color:white;
+		}
 	</style>
 	<body>
 		<div style="background-color:#8AC0D1;width:100%;min-width:1000px;height:190px;border:solid 3px white">
@@ -114,8 +65,8 @@ ResultSet rs = item.getItemsBought(account.getUserID());
 				<p style="line-height:0px"><b>List of Items Bought</b></p>
 			</div>
 			<br/>
-			<div style="padding:15px;border: solid 2px #000;min-width:1100px;width:90%;height:auto;margin-left:auto;
-						margin-right:auto;text-align: center;background-color:white;box-shadow: 10px 10px 5px #888888">
+			<div style="padding:15px;border: solid 2px #000;min-width:1100px;width:auto;height:auto;margin-left:25px;
+						margin-right:25px;text-align: center;background-color:white;box-shadow: 10px 10px 5px #888888">
 					<table>
 					<tr>
 						<th>Item ID</th>
@@ -127,6 +78,7 @@ ResultSet rs = item.getItemsBought(account.getUserID());
 						<th>Sold Price</th>
 						<th>Seller Username</th>
 						<th>Seller Email</th>
+						<th></th>
 					</tr>
 				<%do{%>
 					<tr>

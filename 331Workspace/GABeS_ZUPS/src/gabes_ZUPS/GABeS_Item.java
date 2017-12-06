@@ -401,6 +401,7 @@ public class GABeS_Item {
 	 * This method gets the next item iD by getting the current max
 	 * ItemID and adding one to it.
 	 * @return ResultSet with the desired query
+	 * @throws IllegalStateException
 	 */
 	public int getNextItemID() throws IllegalStateException {
 		try {
@@ -486,6 +487,7 @@ public class GABeS_Item {
 	
 	/**
 	 * This method gets the items that are similar to that of the current item.
+	 * @param the userID of the current user, to ensure that the items retrieved are not being sold by the current user
 	 * @return ResultSet representing the query
 	 */
 	public ResultSet getSimilarItems(int userID) {

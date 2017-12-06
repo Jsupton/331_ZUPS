@@ -1,6 +1,6 @@
 
 <%@ page language="java" import="java.sql.*"%>
-<%@include file="../Admin/Security.jsp"%>
+<%@include file="/Security.jsp"%>
 <jsp:useBean id="feedback" class= "gabes_ZUPS.GABeS_Feedback"/> 
 <jsp:setProperty name="feedback" property="*"/> 
 <%	

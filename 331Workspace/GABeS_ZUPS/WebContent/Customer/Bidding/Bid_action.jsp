@@ -1,6 +1,6 @@
 
 <%@ page language="java" import="java.sql.*"%>
-<%@include file="../Selling/Security.jsp"%>
+<%@include file="/Security.jsp"%>
 <jsp:useBean id="Bid" class= "gabes_ZUPS.GABeS_Bids"/> 
 <jsp:setProperty name="Bid" property="*"/>
 
