@@ -2,6 +2,7 @@
 <%@include file="/Security.jsp"%>
 <%@include file="/Styles/CustomerStyle.jsp"%>
 <jsp:useBean id="Item" class= "gabes_ZUPS.GABeS_Item"/> 
+<jsp:useBean id="search" class= "gabes_ZUPS.GABeS_Search" scope="page"/> 
 <%
 	ResultSet r = Item.getAllCategories();
 %>

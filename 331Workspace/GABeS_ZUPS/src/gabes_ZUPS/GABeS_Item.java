@@ -15,7 +15,6 @@ public class GABeS_Item {
 	/**
 	 * The following fields correspond to the fields in Table GABeS_Item in your
 	 * GABeS_ZUPS Oracle database
-	 * 
 	 */
 	  private int itemID;
 	  private String itemName;
@@ -345,7 +344,8 @@ public class GABeS_Item {
 			String query = "SELECT Distinct b.itemID, i.itemName, i.Categories, i.startTime, i.endtime,i.StartPrice,i.SellerID, GABeS_CURRENT_BID(i.itemid) as Final_Selling_Price,\n" + 
 					"      	(Select Username From GABeS_ACCOUNT A Where A.UserID = i.SellerID) as Seller_Username,(Select email From GABeS_CUSTOMER C Where C.UserID = i.SellerID) as Seller_Email\n" + 
 					"FROM gabes_item i,GABeS_BIDS B, GABeS_ACCOUNT A\n" + 
-					"WHERE i.ItemID = b.ItemID and B.UserID = A.UserID and i.endTime < CURRENT_TIMESTAMP and GABeS_CURRENT_WINNER(i.itemid) = A.username and A.UserID = ?";
+					"WHERE i.ItemID = b.ItemID and B.UserID = A.UserID and i.endTime < CURRENT_TIMESTAMP and GABeS_CURRENT_WINNER(i.itemid) = A.username and A.UserID = ?"
+					+ " Order by b.itemID";
 			PreparedStatement ps = openDBConnection().prepareStatement(query);
 			ps.clearParameters();
 			ps.setInt(1,userID);
@@ -365,7 +365,14 @@ public class GABeS_Item {
 	 */
 	public ResultSet FiveMostPopular() {
 		try {
-			String query = "Select * from(Select Count(MaxBid) as Bids, I.ItemID, I.ItemName, I.Description, GABeS_TIME_REMAINING(I.ItemID) as RemainingTime from GABeS_Item I, GABeS_Bids B where I.ItemID = B.ItemID and I.endTime>Current_TimeStamp Group by I.ItemID, I.ItemName, I.Description, GABeS_TIME_REMAINING(I.ItemID) Order by Bids DESC) Where rownum<=5";
+			String query = "Select * "
+					+ " 	from(Select Count(MaxBid) as Bids, I.ItemID, I.ItemName, I.Description, "
+					+ "				GABeS_TIME_REMAINING(I.ItemID) as RemainingTime "
+					+ "			from GABeS_Item I, GABeS_Bids B "
+					+ "			where I.ItemID = B.ItemID and I.endTime>Current_TimeStamp "
+					+ "			Group by I.ItemID, I.ItemName, I.Description, GABeS_TIME_REMAINING(I.ItemID) "
+					+ "			Order by Bids DESC) "
+					+ "		Where rownum<=5";
 			PreparedStatement ps = openDBConnection().prepareStatement(query);
 			ResultSet rs = ps.executeQuery();
 			return rs;
@@ -508,6 +515,14 @@ public class GABeS_Item {
 		}
 	}
 	
+	/**
+	 * This method is responsible for getting all the items thay the user has bid on but not actually
+	 * winning. This is used to display a message to the user letting them know what items they are 
+	 * not winning anymore.
+	 * @param userID the current user's userID
+	 * @param username the current user's username
+	 * @return a spring with the items the user is not winning.
+	 */
 	public String itemsNotWinning(int userID, String username) {
 		try {
 			String resultString = "";
@@ -527,11 +542,5 @@ public class GABeS_Item {
 			System.out.println(sql.getMessage());
 			return null;
 		}
-	}
-	
-	public static void main(String args[]) {
-		GABeS_Item i = new GABeS_Item();
-		String s = i.itemsNotWinning(4,"MPEKAREK");
-		System.out.println(s);
 	}
 }

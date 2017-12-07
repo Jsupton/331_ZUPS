@@ -2,7 +2,7 @@
 <%@ page language="java" import="java.util.Date.*"%>
 <%@include file="/Security.jsp"%>
 <%@include file="/Styles/CustomerStyle.jsp"%>
-<jsp:useBean id="search" class= "gabes_ZUPS.GABeS_Search"/> 
+<jsp:useBean id="search" class= "gabes_ZUPS.GABeS_Search" scope="session"/> 
 <jsp:useBean id="item" class= "gabes_ZUPS.GABeS_Item"/> 
 <jsp:setProperty name="search" property="*"/>
 

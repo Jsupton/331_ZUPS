@@ -26,7 +26,7 @@ try{
 	int b = customer.UpdateCustomerInfo();
 	//If both updates were successful, then the session variable is populated
 	if(a!=-1 && b!=-1){
-		account.setPassword(newPassword);
+		account.setPassword(acct.getPassword());
 	}
 	else{
 		error = "1";

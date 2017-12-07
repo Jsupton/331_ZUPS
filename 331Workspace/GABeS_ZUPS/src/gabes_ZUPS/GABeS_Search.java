@@ -392,6 +392,7 @@ public class GABeS_Search {
 				this.setSearchCriteria("<span style=\"color:red\"><b>Keyword<b/></span>="+this.getKeyword());
 			}
 			//Execute and return the result set
+			query += " Order by ItemID";
 			ResultSet rs = stmt.executeQuery(query);
 			return rs;
 		}

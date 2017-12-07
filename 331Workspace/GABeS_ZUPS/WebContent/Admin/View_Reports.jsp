@@ -79,7 +79,9 @@ String category = "";
 							subtotal = subtotal + rs1.getDouble(5);
 							%>
 							<tr>
-								<td><%=category%></td>
+								<td colspan=5><%=category%></td>
+							<tr>
+								<td></td>
 								<td><%=rs1.getInt(2) %></td>
 								<td><%=rs1.getString(3) %></td>
 								<td><%=rs1.getDouble(4) %></td>

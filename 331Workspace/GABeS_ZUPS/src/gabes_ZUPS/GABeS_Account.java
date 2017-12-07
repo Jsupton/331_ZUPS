@@ -347,8 +347,12 @@ public class GABeS_Account {
 	 */
 	public ResultSet getRatingsSummary() throws IllegalStateException {
 		try {
-			String query = "Select Seller.Username as Seller, Buyer.Username as Buyer, F.ItemID, Round((Sum(F.rating+F.ItemQuality+F.DeliveryQuality)*2)/3,2) as Rating, F.Comments "
-					+ "From GABeS_Account Seller, GABeS_Account Buyer, GABeS_Feedback F, GABeS_Item I Where I.ItemID = F.ItemID and I.SellerID = Seller.UserID and Buyer.UserID = F.BuyerID Group by Seller.Username, Buyer.Username, F.ItemID, F.Comments Order by Seller,Rating";
+			String query = "Select Seller.Username as Seller, Buyer.Username as Buyer, F.ItemID, "
+					+ "		Round((Sum(F.rating+F.ItemQuality+F.DeliveryQuality)*2)/3,2) as Rating, F.Comments "
+					+ "From GABeS_Account Seller, GABeS_Account Buyer, GABeS_Feedback F, GABeS_Item I "
+					+ "Where I.ItemID = F.ItemID and I.SellerID = Seller.UserID and Buyer.UserID = F.BuyerID "
+					+ "Group by Seller.Username, Buyer.Username, F.ItemID, F.Comments "
+					+ "Order by Seller,Rating";
 			PreparedStatement ps = openDBConnection().prepareStatement(query);
 			ResultSet r = ps.executeQuery();
 			return r;
@@ -372,7 +376,8 @@ public class GABeS_Account {
 			String query = "Select R.UserID,A.Username, R.Fname, R.Lname, R.Email, R.Rating, (Sum(V.COMMISSION)) Commissions " + 
 					"From GABeS_SELLER_RATINGS R full outer join GABES_VIEW_ITEMS V on R.USERID=V.USERID, GABES_ACCOUNT A " + 
 					"Where A.USERID = R.USERID " + 
-					"Group by R.UserID,A.Username, R.Fname, R.Lname, R.Email,R.Rating";
+					"Group by R.UserID,A.Username, R.Fname, R.Lname, R.Email,R.Rating "+
+					"Order by UserID";
 			PreparedStatement ps = openDBConnection().prepareStatement(query);
 			ResultSet r = ps.executeQuery();
 			return r;

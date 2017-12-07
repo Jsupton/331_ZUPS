@@ -157,7 +157,8 @@ public class GABeS_Feedback {
 	public ResultSet getFeedback(int sellerID) {
 		try {
 			String query = "Select F.ItemID, Rating,ItemQuality,DeliveryQuality,Comments " + 
-					"From GABeS_FEEDBACK F, Gabes_ITEM I where F.ItemID = I.ItemID and I.SellerID = ?";
+					"From GABeS_FEEDBACK F, Gabes_ITEM I where F.ItemID = I.ItemID and I.SellerID = ? "
+					+ "Order by F.ItemID";
 			PreparedStatement ps = openDBConnection().prepareStatement(query);
 			ps.clearParameters();
 			ps.setInt(1,sellerID);

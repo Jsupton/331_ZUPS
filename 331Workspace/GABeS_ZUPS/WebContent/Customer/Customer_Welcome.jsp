@@ -24,10 +24,14 @@
 		}
 		.alert {
 		    padding: 20px;
-		    background-color: #f44336;
+		    background-color: #CF0000;
 		    color: white;
+		    font-size:17px;
+		    font-weight:bold;
+		    text-align:center;
+		    opacity: 0.8;
+		    border-bottom: 2px solid white;
 		}
-		
 		.closebtn {
 		    margin-left: 15px;
 		    color: white;
@@ -38,7 +42,6 @@
 		    cursor: pointer;
 		    transition: 0.3s;
 		}
-		
 		.closebtn:hover {
 		    color: black;
 		}
