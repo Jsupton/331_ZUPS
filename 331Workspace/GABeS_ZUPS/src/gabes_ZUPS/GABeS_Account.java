@@ -578,4 +578,32 @@ public class GABeS_Account {
 		}
 	}
 	
+	/**
+	 * Method responsible for returning a result set with the top 5 sellers
+	 * @return ResultSet representing the top 5 sellers
+	 */
+	public ResultSet getTopSellers() {
+		try {
+			String query="With maxSeller as " + 
+				"    (Select GABeS_SELLER_RATING(userID) as maximumSeller, UserID " + 
+				"     From GABeS_Customer " + 
+				"     Order by maximumSeller), " + 
+				"accountInfo as" + 
+				"    (Select A.Username, maximumSeller " + 
+				"    From GABeS_Account A, maxSeller M " + 
+				"    Where M.UserID = A.UserID) " + 
+				"Select * " + 
+				"From accountInfo A " + 
+				"Where rownum<=5 " + 
+				"Order by A.maximumSeller DESC";
+			PreparedStatement ps = openDBConnection().prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			return rs;
+		}
+		catch(SQLException sql) {
+			System.out.println(sql.getMessage());
+			return null;
+		}
+	}
+	
 }

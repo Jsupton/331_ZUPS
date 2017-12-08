@@ -4,6 +4,7 @@
 
 <%
 ResultSet rs = account.getRatingsSummary();
+ResultSet rs2 = account.getTopSellers();
 %>
 
 <html style="background-color:white"> 
@@ -42,6 +43,26 @@ ResultSet rs = account.getRatingsSummary();
 			</ul>
 		</div>
 		<div style="background-color:#eaeaea;width:100%;height:auto;border:solid 2px white">
+			<br/>
+			<div style="font-size:22px;background-color:#97d8c3;border:solid 2px white;width:500px;height:40px;margin-left:auto;margin-right:auto;text-align: center;">
+				<p style="line-height:0px"><b>Top 5 sellers</b></p>
+			</div>
+			<br/>
+			<div style="padding:10px;border: solid 2px #000;width:700px;height:auto;margin-left:auto;margin-right:auto;text-align: center;background-color:white;box-shadow: 10px 10px 5px #888888">
+				<table>
+					<tr>
+						<th>Seller Username</th>
+						<th>Seller Rating</th>
+					</tr>
+					<% while(rs2.next()){ %>
+						<tr>
+							<td><%=rs2.getString(1) %></td>
+							<td><%=rs2.getInt(2) %></td>
+						</tr>
+					<%}%>
+				</table>
+			</div>
+			<br/>
 			<br/>
 			<div style="font-size:22px;background-color:#97d8c3;border:solid 2px white;width:500px;height:40px;margin-left:auto;margin-right:auto;text-align: center;">
 				<p style="line-height:0px"><b>Customer Feedback Summary</b></p>
