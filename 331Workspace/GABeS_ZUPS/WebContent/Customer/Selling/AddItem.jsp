@@ -60,7 +60,7 @@
 							</tr>
 							<tr>
 								<td>Start Price</td>
-								<td><input name="startPrice" type="Number" required></td>
+								<td><input name="startPrice" type="Number" min=0 max=1000000 required></td>
 							</tr>
 							<tr>
 								<td>Auction Starts</td>
