@@ -29,6 +29,7 @@
 		}
 	</style>
 	<body>
+	<%response.setIntHeader("Refresh", 5);%>
 		<div style="background-color:#8AC0D1;width:100%;min-width:1000px;height:190px;border:solid 3px white">
 			<div style="background-color:White;width:70%;min-width:650px;height:110px;margin-left:auto;margin-right:auto;box-shadow: 10px 10px 5px #777">
 				<h1 style="text-align:center"><img src="../Images/GABES.png" style="width:200px;height:50px;padding-top:25px"> Feedback</h1>
