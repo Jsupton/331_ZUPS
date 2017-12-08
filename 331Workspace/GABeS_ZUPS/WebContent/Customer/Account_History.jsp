@@ -86,6 +86,11 @@
 						<td><b><i>TOTAL:</i></b> <%=Math.round(account.getAmountItemsSold()*100.0)/100.0 %><span style="color:red">***</span></td>
 					</tr>
 					<tr>
+						<td><b>Average Item Selling Price</b></td>
+						<td></td>
+						<td><b><i>AVERAGE:</i></b> <%=account.getAverageAmount() %><span style="color:red"></span></td>
+					</tr>
+					<tr>
 						<form method="post" action="Customer_Welcome.jsp" name="cancel" >								
 							<td style="padding:15px" colspan="3"><input type="submit" value="Back" class="button" style="padding:0px;width:200px;height:auto;margin-right:auto;margin-left:110px"></td>
 						</form>

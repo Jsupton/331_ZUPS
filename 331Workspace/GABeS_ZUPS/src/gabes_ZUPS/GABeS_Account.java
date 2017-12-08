@@ -579,6 +579,30 @@ public class GABeS_Account {
 	}
 	
 	/**
+	 * Method responsible for returning the Average Selling Price for items that the
+	 * user has sold.
+	 * @return double representing the current total sold
+	 */
+	public double getAverageAmount() {
+		try {
+			double itemAverage = 0.0;
+			String query = "Select GABeS_Average_Selling_Price(?) from Dual";
+			PreparedStatement ps = openDBConnection().prepareStatement(query);
+			ps.clearParameters();
+			ps.setInt(1, this.getUserID());
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				itemAverage = rs.getDouble(1);
+			}
+			return itemAverage;
+		}
+		catch(SQLException sql) {
+			System.out.println(sql.getMessage());
+			return 0.0;
+		}
+	}
+	
+	/**
 	 * Method responsible for returning a result set with the top 5 sellers
 	 * @return ResultSet representing the top 5 sellers
 	 */
