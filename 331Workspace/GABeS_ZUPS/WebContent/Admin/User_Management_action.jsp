@@ -1,7 +1,7 @@
 
 <%@ page language="java" import="java.sql.*"%>
-<jsp:useBean id="cust" class= "jupton.gabes_ZUPS.GABeS_Customer"/> 
-<jsp:useBean id="acct" class= "jupton.gabes_ZUPS.GABeS_Account"/> 
+<jsp:useBean id="cust" class= "jsupton.gabes_ZUPS.GABeS_Customer"/> 
+<jsp:useBean id="acct" class= "jsupton.gabes_ZUPS.GABeS_Account"/> 
 <jsp:setProperty name="cust" property="*"/> 
 <jsp:setProperty name="acct" property="*"/>
 <%@include file="/Security.jsp"%>

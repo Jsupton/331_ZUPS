@@ -1,4 +1,4 @@
-package jupton.gabes_ZUPS;
+package jsupton.gabes_ZUPS;
 import java.util.*;
 import java.lang.*;
 import java.io.*;

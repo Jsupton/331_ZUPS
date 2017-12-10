@@ -1,4 +1,4 @@
-package jupton.gabes_ZUPS;
+package jsupton.gabes_ZUPS;
 import java.util.Date;
 //Load JDBC API functions
 import java.sql.*;

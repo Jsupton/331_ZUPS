@@ -1,8 +1,8 @@
 <%@ page language="java" import="java.sql.*"%>
 <%@include file="/Security.jsp"%>
 <%@include file="/Styles/CustomerStyle.jsp"%>
-<jsp:useBean id="Item" class= "jupton.gabes_ZUPS.GABeS_Item"/> 
-<jsp:useBean id="search" class= "jupton.gabes_ZUPS.GABeS_Search" scope="page"/> 
+<jsp:useBean id="Item" class= "jsupton.gabes_ZUPS.GABeS_Item"/> 
+<jsp:useBean id="search" class= "jsupton.gabes_ZUPS.GABeS_Search" scope="page"/> 
 <%
 	ResultSet r = Item.getAllCategories();
 %>
