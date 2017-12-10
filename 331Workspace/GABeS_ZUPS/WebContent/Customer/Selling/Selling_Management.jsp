@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.sql.*"%>
-<%@include file="/Security.jsp"%>
-<%@include file="/Styles/CustomerStyle.jsp"%>
+<%@include file="../../Security.jsp"%>
+<%@include file="../../Styles/CustomerStyle.jsp"%>
 <html style="background-color:white">
 	<head>
 		<title>Selling Management</title>

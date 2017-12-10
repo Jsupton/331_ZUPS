@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.sql.*"%>
-<jsp:useBean id="account" class= "jsupton.gabes_ZUPS.GABeS_Account" scope="session"/> 
+<jsp:useBean id="account" class="jsupton.gabes_ZUPS.GABeS_Account" scope="session"/> 
 <jsp:setProperty name="account" property="*"/>
 <%
 	session.setMaxInactiveInterval(1800);

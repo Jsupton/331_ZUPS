@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.io.*,java.sql.*"%>
-<%@include file="/Security.jsp"%>
-<%@include file="/Styles/CustomerStyle.jsp"%>
+<%@include file="../../Security.jsp"%>
+<%@include file="../../Styles/CustomerStyle.jsp"%>
 <jsp:useBean id="item" class= "jsupton.gabes_ZUPS.GABeS_Item" /> 
 
 <html style="background-color:white">

@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.sql.*"%>
 <%@ page language="java" import="java.util.Date.*"%>
-<%@include file="/Security.jsp"%>
-<%@include file="/Styles/CustomerStyle.jsp"%>
+<%@include file="../Security.jsp"%>
+<%@include file="../Styles/CustomerStyle.jsp"%>
 <jsp:useBean id="Feedback" class= "jsupton.gabes_ZUPS.GABeS_Feedback"/> 
 
 <%

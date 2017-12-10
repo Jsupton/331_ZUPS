@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.sql.*"%>
-<%@include file="/Security.jsp"%>
-<%@include file="/Styles/AdminStyle.jsp"%>
+<%@include file="../Security.jsp"%>
+<%@include file="../Styles/AdminStyle.jsp"%>
 
 <%
 ResultSet rs1 = account.getSalesSummary(); 
