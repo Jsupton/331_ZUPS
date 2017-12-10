@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.sql.*"%>
 <%@include file="/Security.jsp"%>
 <%@include file="/Styles/CustomerStyle.jsp"%>
-<jsp:useBean id="customer" class= "gabes_ZUPS.GABeS_Customer"/>
+<jsp:useBean id="customer" class= "jupton.gabes_ZUPS.GABeS_Customer"/>
 <%
 	account.getAccountInfo();
 	customer.setUserID(account.getUserID());

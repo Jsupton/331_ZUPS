@@ -1,7 +1,7 @@
 
 <%@ page language="java" import="java.sql.*"%>
 <%@include file="/Security.jsp"%>
-<jsp:useBean id="feedback" class= "gabes_ZUPS.GABeS_Feedback"/> 
+<jsp:useBean id="feedback" class= "jupton.gabes_ZUPS.GABeS_Feedback"/> 
 <jsp:setProperty name="feedback" property="*"/> 
 <%	
 
