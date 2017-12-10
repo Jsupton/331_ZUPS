@@ -57,7 +57,7 @@ ResultSet rs2 = account.getTopSellers();
 					<% while(rs2.next()){ %>
 						<tr>
 							<td><%=rs2.getString(1) %></td>
-							<td><%=rs2.getInt(2) %></td>
+							<td><%=rs2.getDouble(2) %></td>
 						</tr>
 					<%}%>
 				</table>
