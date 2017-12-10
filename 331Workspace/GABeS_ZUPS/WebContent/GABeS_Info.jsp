@@ -67,6 +67,13 @@
 			</div>
 			<br/>
 			<br/>
+			<br/>
+			<br/>
+			<div >
+				<hr style="height:2px;background-color:#777;color:#777;border:solid 1px white;margin-left:20px;margin-right:20px"/>
+				<p style="font-size:12px;margin-left:20px"> <b>Copyright ©2017 ZUPS. Powered by Upton, Schmidgall, Pekarek, and Zins </b></p>
+				<br/>
+			</div>
 		</div>
 	</body>
 </html>

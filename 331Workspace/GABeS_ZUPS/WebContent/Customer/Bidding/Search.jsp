@@ -2,9 +2,10 @@
 <%@include file="/Security.jsp"%>
 <%@include file="/Styles/CustomerStyle.jsp"%>
 <jsp:useBean id="Item" class= "jsupton.gabes_ZUPS.GABeS_Item"/> 
-<jsp:useBean id="search" class= "jsupton.gabes_ZUPS.GABeS_Search" scope="page"/> 
+<jsp:useBean id="search" class= "jsupton.gabes_ZUPS.GABeS_Search"/>
 <%
 	ResultSet r = Item.getAllCategories();
+	session.removeAttribute("search");
 %>
 <html style="background-color:white"> 
 	<head>
