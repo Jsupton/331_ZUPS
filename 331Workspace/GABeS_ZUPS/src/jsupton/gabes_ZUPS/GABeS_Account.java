@@ -611,7 +611,7 @@ public class GABeS_Account {
 			String query="With maxSeller as " + 
 				"    (Select GABeS_SELLER_RATING(userID) as maximumSeller, UserID " + 
 				"     From GABeS_Customer " + 
-				"     Order by maximumSeller), " + 
+				"     Order by maximumSeller DESC), " + 
 				"accountInfo as" + 
 				"    (Select A.Username, maximumSeller " + 
 				"    From GABeS_Account A, maxSeller M " + 

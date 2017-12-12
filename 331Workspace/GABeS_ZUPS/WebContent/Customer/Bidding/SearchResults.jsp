@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.sql.*"%>
 <%@ page language="java" import="java.util.Date.*"%>
-<%@include file="../../Security.jsp"%>
+<%@include file="../../Styles/Security.jsp"%>
 <%@include file="../../Styles/CustomerStyle.jsp"%>
 <jsp:useBean id="search" class= "jsupton.gabes_ZUPS.GABeS_Search" scope="session"/> 
 <jsp:useBean id="item" class= "jsupton.gabes_ZUPS.GABeS_Item"/> 

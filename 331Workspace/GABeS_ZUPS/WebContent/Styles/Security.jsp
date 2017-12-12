@@ -3,7 +3,7 @@
 <%
 
 if(!account.isLoggedIn()){
-	response.sendRedirect("../Login.jsp?Error=2");
+	response.sendRedirect("../../Login.jsp?Error=2");
 	return;
 }
 %>
